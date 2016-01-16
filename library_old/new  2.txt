@@ -1,0 +1,13 @@
+<form action="<?php suggest()?>" method="post" enctype="multipart/form-data">
+
+
+
+
+
+
+	}
+	else
+	{
+		$_SESSION['error']="Please fill out the form for submitting a suggestion";
+	header('Location:suggest.php');
+	}
