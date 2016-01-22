@@ -1,0 +1,26 @@
+<!-- <html>
+<head>
+	<title></title>
+</head>
+<body>
+<h1>Papers Uploaded</h1>
+</body>
+</html> -->
+
+<?php
+session_start();
+include('connect.php');
+$db=dbConnect();
+$_SESSION['subErr']=$_SESSION['yearErr']=$_SESSION['branchErr']=$_SESSION['courseErr']=$_SESSION['info']="";
+
+$stmt = $db->prepare("INSERT INTO `suggest`(`bookname`,`author`,`publisher`,`edition`,`volume`,`review`,`date_posted`) VALUES (?,?,?,?,?,?,NOW())");
+		//	echo $sql;
+		$stmt->bind_param('ssssss', $bookname,$author,$publisher,$edition,$volume,$review);
+		$res=$stmt->execute();  
+		if(!$res)
+		{
+			die("error".mysqli_error($db));
+		}
+		mysqli_close($db);
+		$_SESSION['info']="Thank You for your suggestion, it has been recorded successfully";
+		header('Location:suggest.php');

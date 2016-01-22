@@ -77,7 +77,7 @@ $_SESSION['titleErr']=$_SESSION['authorErr']=$_SESSION['publisherErr']=$_SESSION
 		}
 		mysqli_close($db);
 		$_SESSION['info']="Thank You for your suggestion, it has been recorded successfully";
-		header('Location:suggest.php ');
+		header('Location:suggest.php');
 	}
  }
 	?>
