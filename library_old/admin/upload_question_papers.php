@@ -122,30 +122,40 @@ if(!isset($_SESSION['username']))
      <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
      <input type="hidden" name="completed" value="1">
        Please choose a .pdf to upload: <input type="file" name="image"><br>
-       Please enter the course:    <select>
+       Please enter the course:    <select name = "course">
   <option value="btech">Btech</option>
   <option value="MBA">MBA</option>
   <option value="MCA">MCA</option>
   <option value="Mtech">Mtech</option>
 </select><br>
        Please enter the subject of that document: <input type="text" name="subject"><br><br>
-       Please enter the year of that document:    <select>
+       Please enter the year of that document:    <select name = "year">
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
   <option value="4">4</option>
 </select><br>
-       Please enter the branch:                  <select>
+       Please enter the branch:                  <select name = "branch">
   <option value="cs">CS</option>
   <option value="it">IT</option>
   <option value="ec">EC</option>
   <option value="ee">EE</option>
-   <option value="ee">ME</option>
-    <option value="ee">CE</option>
-     <option value="ee">MT</option>
-      <option value="ee">IC</option>
+   <option value="me">ME</option>
+    <option value="ce">CE</option>
+     <option value="mt">MT</option>
+      <option value="ic">IC</option>
 </select><br>
-     <input type="submit" class="btn btn-primary"></form><br>
+<p>
+<?php
+
+    
+if(!isset($_SESSION['info']))
+    {
+    echo $_SESSION['info'];
+    }
+?>
+</p>
+     <input type="submit" class="btn btn-primary"></formsm><br>
 
 
                         

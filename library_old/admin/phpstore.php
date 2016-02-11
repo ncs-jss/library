@@ -23,13 +23,38 @@ $db=dbConnect();
       }
       
       if(empty($errors)==true){
-         move_uploaded_file($file_tmp,"C:\\xampp\htdocs\library_jss\library_old\images\\".$file_name);
-        // echo "Success";
-      }else{
+         $path = './images/';
+
+if ( ! is_dir($path)) {
+    mkdir($path);
+}
+         move_uploaded_file($file_tmp,$path.$file_name);
+//echo $path.$file_name;
+
+$course = $_POST['course'];
+$branch = $_POST['branch'];
+$subject = $_POST['subject'];
+$year = $_POST['year'];
+
+$stmt = $db->prepare("INSERT INTO `papers`(`file_name`,`course`,`subject`,`year`,`branch`) VALUES (?,?,?,?,?)");
+      // echo $sql;
+      $stmt->bind_param('sssss', $file_name,$course,$subject,$year,$branch);
+      $res=$stmt->execute();  
+      if(!$res)
+      {
+         die("error".mysqli_error($db));
+      }
+      $_SESSION['info']="Successfully Uploaded";
+     
+//echo $_SESSION['info'];
+     // header('Location:upload_question_papers.php');
+        }
+        else{
+  //        echo $errors;
          print_r($errors);
       }
    }
-   header('location:../view_papers.html')
+// header('location:upload_question_papers.php')
 
 
 
