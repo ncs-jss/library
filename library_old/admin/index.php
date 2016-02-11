@@ -155,8 +155,8 @@ if(isset($_SESSION['username']))
                             <hr class='orange'>
                             <ul>
                             
-                               <?php echo "<li><a href="view_query.php">View Query</a></li>"
-                                echo "<li><a href="view_suggest.php">View Suggested Books</a></li>"
+                               <?php echo "<li><a href='view_query.php'>View Query</a></li>";
+                                echo "<li><a href='view_suggest.php'>View Suggested Books</a></li>";
                                 ?>
                                 
                             </ul>

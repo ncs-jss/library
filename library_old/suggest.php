@@ -152,24 +152,36 @@ session_start();
                         
                             <h1>Navigation</h1>
                             <hr class="orange">
-                                                        <ul>
-                            
-                                <li><a href="services.php">Services</a></li>
-                                <li><a href="new-arrivals.php">New Arrival</a></li>
-                                <li><a href="admin-login.php">Admin Login</a></li>
-                                <li><a href="news.php">News And Events</a></li>
-                                <li><a href="404.php">Library OPAC</a></li>
+                                                    <ul>
+
+
+
+                                 <?php if($flag==1)
+                                 {
+                                echo "<li><a href='admin/post_notices.php'> Post Notices</a></li>";
+                                echo "<li><a href='admin/post_newarrivals.php'> Post New Arrival</a></li>";
+                                echo "<li><a href='admin/post_news.php'>Post News And Events</a></li>";
+                                echo "<li><a href='admin/upload_question_papers.php'>Upload question papers</a></li>";
+                                echo "<li><a href='admin/logout.php'>Logout</a></li>";
                                 
-                            </ul>
-                    
-                            <h1 id="other-headline">Ask Librarian</h1>
-                            <hr class="orange">
-                            <ul>
-                            
-                                <li><a href="query.php">Submit Query</a></li>
-                                <li><a href="suggest.php">Suggest Books</a></li>
+                                 }
+                                 else{
+                                    echo "<li><a href='services.php'>Services</a></li>";
+                                echo "<li><a href='new-arrivals.php'>New Arrival</a></li>";
                                 
-                            </ul>
+                                echo "<li><a href='news.php'>News And Events</a></li>";
+                                echo "<li><a href='404.php'>Library OPAC</a></li>";
+                                echo "<li><a href='admin-login.php'>Admin Login</a></li>";
+                                echo "  <h1 id='other-headline'>Ask Librarian</h1>
+                                    <hr class='orange'>
+                                    <ul>
+                            
+                                <li><a href='query.php'>Submit Query</a></li>
+                                <li><a href='suggest.php'>Suggest Books</a></li>
+                                
+                                 </ul>";
+
+                                 }                       ?></ul>
                             
                             <h1 id="other-headline">Registration</h1>
                             <hr class="orange">
