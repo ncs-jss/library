@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
 	if(!isset($_SESSION['username']))
 	{
 		$_SESSION['error_admin'] = "Login to proceed further";

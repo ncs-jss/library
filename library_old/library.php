@@ -408,6 +408,7 @@ else{
 }
 function display_queries()
 {
+
 	session_start();
 	if(!isset($_SESSION['username']))
 	{
@@ -434,6 +435,7 @@ function display_queries()
 function delete_notices($id)//pass the corresponding id to be deleted here
 {
 	session_start();
+
 	if(!isset($_SESSION['username']))
 	{
 		$_SESSION['error_admin'] = "Login to proceed further";
@@ -456,6 +458,7 @@ else{
 function delete_news($id)
 {
 	session_start();
+	
 	if(!isset($_SESSION['username']))
 	{
 		$_SESSION['error_admin'] = "Login to view proceed further";
@@ -476,6 +479,7 @@ else{	$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connec
 function delete_arrivals($id)
 {
 	session_start();
+
 	if(!isset($_SESSION['username']))
 	{
 		$_SESSION['error_admin'] = "Login to view proceed further";

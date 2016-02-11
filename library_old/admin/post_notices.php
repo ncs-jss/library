@@ -128,7 +128,7 @@ if(!isset($_SESSION['username']))
                                         <label class=" sr-only">Message</label>
                                         <textarea placeholder="Message" id="message" name="message" value="<?php if(isset($_SESSION['message']))echo $_SESSION['message']?>" rows="3" ></textarea><span class="error"><?php if(isset($_SESSION['messageErr']))echo $_SESSION['messageErr'];?></span>
                                     </div>
-                                    <button type="submit" class="btn btn-primary" id="arrivalpost" name="arrivalpost" >Submit</button><span class="error"><?php if(isset($_SESSION['info']))echo $_SESSION['info'];?></span>
+                                    <button type="submit" class="btn btn-primary" id="arrivalpost" name="arrivalpost" >Submit</button><div class="error"><?php if(isset($_SESSION['info']))echo $_SESSION['info'];?></div>
                                 </form>
                                 
                             </div>

@@ -149,7 +149,7 @@ $s="";
                         
                         <div class="row">
                         <form action="delete_suggest.php" method="post">
-                            <table class="table table-striped table-row " id="data">
+                            <table class="table table-striped table-row table2" id="data">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -160,6 +160,12 @@ $s="";
                                         <th>Volume</th>
                                         <th>Review</th>
                                         <th>Posted On</th>
+                                        <?php
+                                        if($flag==1)
+                                        {
+                                            echo "<th>Delete</th>";
+                                        }
+                                        ?>
                                     </tr>
                                 </thead>
                                 <tbody>

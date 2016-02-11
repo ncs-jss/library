@@ -142,6 +142,7 @@ $s="";
 																			
 											
 										</script>
+                                        <a href='../notices/index.php' class="btn btn-primary fa"> Back</a>
 
 									
                                 </form>
@@ -221,7 +222,7 @@ $s="";
                                 <script>
         $(document).ready(function(){
             $('#data').after('<div id="nav"></div>');
-            var rowsShown = 4;
+            var rowsShown = 10;
             var rowsTotal = $('#data tbody tr').length;
             $('#nav').append('>>');
             var numPages = rowsTotal/rowsShown;

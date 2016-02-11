@@ -427,11 +427,11 @@ section.e-resources{
     width: 20%;
 }
 .table-row th:nth-child(3){
-    width: 65%;
+    width: 50%;
 }
 
 .table-row th:nth-child(4){
-    width: 10%;
+    width: 15%;
 }
 
 .table-row td:nth-child(1){
@@ -452,7 +452,9 @@ section.e-resources{
 .table-row{
     table-layout: fixed;
     font-size: .8em;
+    word-wrap:break-word;
 }
+
 
 .table1 th:nth-child(1){
     width: 2%;
@@ -511,6 +513,71 @@ section.e-resources{
 .table1 td:nth-child(8){
     width: 2%;
 }
+
+/*table2 css*/
+
+.table2 th:nth-child(1){
+    width: 2%;
+}
+
+.table2 th:nth-child(2){
+    width: 25%;
+}
+
+.table2 th:nth-child(3){
+    width: 15%;
+}
+
+.table2 th:nth-child(4){
+    width: 15%;
+}
+
+.table2 th:nth-child(5){
+    width: 7%;
+}
+
+.table2 th:nth-child(6){
+    width: 7%;
+}
+.table2 th:nth-child(8){
+    width: 10%;
+}
+
+.table2 th:nth-child(9){
+    width: 6%;
+}
+
+.table2 td:nth-child(1){
+    width: 2%;
+}
+
+.table2 td:nth-child(2){
+    width: 25%;
+}
+
+.table2 td:nth-child(3){
+    width:15%;
+}
+
+.table2 td:nth-child(4){
+    width: 15%;
+}
+
+.table2 td:nth-child(5){
+    width: 7%;
+}
+
+.table2 td:nth-child(6){
+    width: 7%;
+}
+.table2 td:nth-child(8){
+    width: 10%;
+}
+.table2 td:nth-child(9){
+    width: 6%;
+}
+
+
 
 
 /* ==========================================================================

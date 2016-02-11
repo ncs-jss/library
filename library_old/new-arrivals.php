@@ -129,7 +129,7 @@ if(isset($_SESSION['username']))
                                     <div class="form-group">
                                         <input type="text" class="form-control" name="search" placeholder="Search">
                                     </div>
-                                    <button type="submit" class="btn btn-primary fa fa-search "></button>
+                                    <button type="submit" class="btn btn-primary fa  fa-search "></button>
 									<script>
 											$( 'input[name="search"]').change(function() {
 											window.location = <?php 
@@ -139,10 +139,11 @@ if(isset($_SESSION['username']))
 												echo '"?pages='.$_REQUEST['pages'].'&"+' ;  
 												?>"?search="+ $( 'input[name="search"]').val();
 																			});
+
 																			
 											
 										</script>
-
+                                        <a href='new-arrivals.php' class="btn btn-primary fa"> Back</a>
                                 </form>
                                 
                             </div>
@@ -214,7 +215,7 @@ if(isset($_SESSION['username']))
                                 <script>
         $(document).ready(function(){
             $('#data').after('<div id="nav"></div>');
-            var rowsShown = 4;
+            var rowsShown = 10;
             var rowsTotal = $('#data tbody tr').length;
             $('#nav').append('>>');
             var numPages = rowsTotal/rowsShown;
