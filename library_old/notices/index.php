@@ -162,7 +162,10 @@ $s="";
                                         <th>Title</th>
                                         <th>Description</th>
                                         <th>Posted On</th>
-                                        
+                                         <?php if ($flag==1) {
+                                       
+                                        echo "<th>Delete</th>";
+                                       }  ?> 
                                     </tr>
                                 </thead>
                                 
@@ -191,9 +194,7 @@ $s="";
                                      </tr>
                                     <?php $i=$i+1; }
 									}
-									else {
-
-									
+									else{
 									while($i<$count) {?>
                                     <tr>
                                         <th scope="row"><?php echo $i+1 ?></th>

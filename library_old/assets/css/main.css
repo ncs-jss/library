@@ -447,13 +447,71 @@ section.e-resources{
 .table-row td:nth-child(4){
     width: 10%;
 }
-.table-row td:nth-child(7){
-    width: 40%;
+
+
+.table-row{
+    table-layout: fixed;
+    font-size: .8em;
 }
 
-.table-row th:nth-child(4){
-    width: 40%;
+.table1 th:nth-child(1){
+    width: 2%;
 }
+
+.table1 th:nth-child(2){
+    width: 10%;
+}
+
+.table1 th:nth-child(3){
+    width: 10%;
+}
+
+.table1 th:nth-child(4){
+    width: 5%;
+}
+
+.table1 th:nth-child(5){
+    width: 5%;
+}
+
+.table1 th:nth-child(6){
+    width: 15%;
+}
+.table1 th:nth-child(8){
+    width: 10%;
+}
+
+
+.table1 td:nth-child(1){
+    width: 2%;
+}
+
+.table1 td:nth-child(2){
+    width: 10%;
+}
+
+.table1 td:nth-child(3){
+    width: 10%;
+}
+
+.table1 td:nth-child(4){
+    width: 5%;
+}
+
+.table1 td:nth-child(5){
+    width: 5%;
+}
+
+.table1 td:nth-child(6){
+    width: 15%;
+}
+.table1 td:nth-child(8){
+    width: 10%;
+}
+.table1 td:nth-child(8){
+    width: 2%;
+}
+
 
 /* ==========================================================================
    Helper classes

@@ -149,7 +149,7 @@ $s="";
                         
                         <div class="row">
                         <form action="delete_query.php" method="post">
-                            <table class="table table-striped table-row " id="data">
+                            <table class="table table-striped table-row table1" id="data">
                                 <thead>
                                     <tr>
                                         <th>#</th>
