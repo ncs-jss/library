@@ -1,21 +1,20 @@
 <?php
 include('../library.php');
-$rowqueryfetched=array();
-$rowqueryfetched=display_booksuggest();
-$count=sizeof($rowqueryfetched);
+$rownoticefetched=array();
+$rownoticefetched=display_papers();
+$count=sizeof($rownoticefetched);
 $i=0;
 $flag=0;
-//session_start();
+session_start();
 if(isset($_SESSION['username']))
 {
     $flag=1;
 }
-else
-$flag=0;
 $s="";
-
 ?>
 
+
+<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -28,12 +27,14 @@ $s="";
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-		<script src="assets/js/vendor/jquery-1.11.1.min.js"></script>
-        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <link rel="stylesheet" href="../assets/css/bootstrap.css">
         <link rel="stylesheet" href="../assets/css/main.css">
-        <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+
+<script src="assets/js/initiate.js"></script>  
+		<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script src="../assets/js/vendor/jquery-1.11.1.min.js"></script>
+		<link rel="stylesheet" href="../assets/css/font-awesome.min.css">
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -75,9 +76,12 @@ $s="";
                                     <ul class="nav navbar-nav navbar-right">
                                        <li class="active"><a href="../index.php">Home <span class="sr-only">(current)</span></a></li>
                                         <li><a href="../e-resources/index.php">E-Resources</a></li>
-                                        <li><a href="../notices/index.php">Notices</a></li> 
+                                        <li><a href="../notices/index.php">Notices</a></li>	
                                         <li><a href="../contact/index.php">Contact Us</a></li>
                                         <li><a href="../external-links/index.php">External Links</a></li>
+                                        <?php if($flag==1)
+        echo "<li><a href='../admin/index.php'>Dash Board</a></li>";
+     ?>
                                     </ul>
 
                                 </div><!-- /.navbar-collapse -->
@@ -111,7 +115,7 @@ $s="";
 
                         <div class="row resources-content" id="services">
 
-                            <h2>Queries</h2>
+                            <h2>Previous Year Question Papers</h2>
                             <div class="col-sm-4 ">
                                 
 
@@ -123,7 +127,7 @@ $s="";
 
                                 <form class="navbar-form " role="search">
                                     <div class="form-group">
-                                        <input type="text" class="form-control"  name="search" placeholder="Search">
+                                        <input type="text" class="form-control" name="search" placeholder="Search">
                                     </div>
                                     <button type="submit" class="btn btn-primary fa fa-search "></button>
 									<script>
@@ -138,8 +142,9 @@ $s="";
 																			
 											
 										</script>
-                                    <a href='..\admin\view_suggest.php' class="btn btn-primary fa"> Back</a>
+                                        <a href='../notices/index.php' class="btn btn-primary fa"> Back</a>
 
+									
                                 </form>
                                 
                             </div>
@@ -149,97 +154,72 @@ $s="";
                         </div>
                         
                         <div class="row">
-                        <form action="delete_suggest.php" method="post">
-                            <table class="table table-striped table-row table2" id="data">
+                        <form action="delete_notice.php" method="post">
+                            <table class="table table-striped table-row " id="data">
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Book Name</th>
-                                        <th>Author</th>
-                                        <th>Publisher</th>
-                                        <th>Edition</th>
-                                        <th>Volume</th>
-                                        <th>Review</th>
-                                        <th>Posted On</th>
-                                        <?php
-                                        if($flag==1)
-                                        {
-                                            echo "<th>Delete</th>";
-                                        }
-                                        ?>
+                                        
+                                        <th>File Name</th>
+                                        <th>Course</th>
+                                        <th>Year</th>
+                                        <th>Branch</th>
+                                        <th>Download</th> 
                                     </tr>
                                 </thead>
+                                
                                 <tbody>
-								
+                                    
                                     <?php 
 									if(isset($_REQUEST['search']))
 									{
 										while($i<$count) {?>
 										<?php 
-										if(strcmp($_REQUEST['search'],$rowqueryfetched[$i]['bookname'])==0)
+										if(strcmp($_REQUEST['search'],$rownoticefetched[$i]['file_name'])==0)
 										{
 										?>
                                     <tr>
                                         <th scope="row"><?php echo $i+1 ?></th>
                                         
-                                       <td><?php echo $rowqueryfetched[$i]['bookname']?> </td>
-                                        <td><?php echo $rowqueryfetched[$i]['author']?> </td>
-                                        <td><?php echo $rowqueryfetched[$i]['publisher']?> </td>
-                                        <td><?php echo $rowqueryfetched[$i]['edition']?> </td>
-                                        <td><?php echo $rowqueryfetched[$i]['volume']?> </td>
-                                        <td><?php echo $rowqueryfetched[$i]['review']?> </td>
-                                        <td><?php echo $rowqueryfetched[$i]['date_posted']?> </td>
-                                         <?php if ($flag==1) {
-                                        $s=$rowqueryfetched[$i]['id'];
-                                       
-                                        echo "<td><input type=\"checkbox\" name=\"checklist[]\" value=\"$s\"></td>";
-                                         }}?>
+                                        <td><?php echo $rownoticefetched[$i]['file_name']?> </td>
+                                        <td><?php echo $rownoticefetched[$i]['course']?> </td>
+                                        <td><?php echo $rownoticefetched[$i]['year']?> </td>
+                                        <td><?php echo $rownoticefetched[$i]['branch']?> </td>
+                                        <td><a href="./images/<?php echo $rownoticefetched[$i]['file_name']?>">Download</a></td>
+                                        <?php }?>
 
                                      </tr>
                                     <?php $i=$i+1; }
 									}
-									else {
-
-									 while($i<$count) {?>
+									else{
+									while($i<$count) {?>
                                     <tr>
                                         <th scope="row"><?php echo $i+1 ?></th>
-                                        <td><?php echo $rowqueryfetched[$i]['bookname']?> </td>
-                                        <td><?php echo $rowqueryfetched[$i]['author']?> </td>
-                                        <td><?php echo $rowqueryfetched[$i]['publisher']?> </td>
-                                        <td><?php echo $rowqueryfetched[$i]['edition']?> </td>
-                                        <td><?php echo $rowqueryfetched[$i]['volume']?> </td>
-                                        <td><?php echo $rowqueryfetched[$i]['review']?> </td>
-                                        <td><?php echo $rowqueryfetched[$i]['date_posted']?> </td>
-                                          <td><input type="checkbox" name="checklist[]" value="<?php echo $rowqueryfetched[$i]['id']?> "></td>
-                                    </tr>
-                                    <?php $i=$i+1; }}?>
+                                        
+                                          <td><?php echo $rownoticefetched[$i]['file_name']?> </td>
+                                        <td><?php echo $rownoticefetched[$i]['course']?> </td>
+                                        <td><?php echo $rownoticefetched[$i]['year']?> </td>
+                                        <td><?php echo $rownoticefetched[$i]['branch']?> </td>
+                                        <td><a href="./images/<?php echo $rownoticefetched[$i]['file_name']?>">Download</a></td>
+                                       
+                                     </tr>
+                                    <?php $i=$i+1; }   }?>
+                                                                   
                                 </tbody>
-                            </table>
-                            <input type="submit" value="Delete Selected" id="delete" class="btn btn-primary fa fa-search " name="delete" style="margin-left:750px;">
-                            </form>
+                            </table></form>
                         
                         </div>
                         
-                                <script>
-										$(document).ready(function(){
-											$('nav ul li').on("click",function(){
-												window.location = "?pagination="+ $(this).text();	
-											});
-										});
-																	
-								</script>
-                                
-
                                 <script>
         $(document).ready(function(){
             $('#data').after('<div id="nav"></div>');
             var rowsShown = 10;
             var rowsTotal = $('#data tbody tr').length;
-            var numPages = rowsTotal/rowsShown;
             $('#nav').append('>>');
+            var numPages = rowsTotal/rowsShown;
             for(i = 0;i < numPages;i++) {
                 var pageNum = i + 1;
-                $('#nav').append('<a href="#" rel="'+i+'" style="font-size:20px;margin-left:30px;">'+pageNum+'</a> ');
+                $('#nav').append('<a href="#" rel="'+i+'" style="font-size:18px;margin-left:30px;">'+pageNum+'</a> ');
             }
             $('#data tbody tr').hide();
             $('#data tbody tr').slice(0, rowsShown).show();
@@ -256,9 +236,15 @@ $s="";
             });
         });
     </script>
-
-                
                         
+                                <script>
+										$(document).ready(function(){
+											$('nav ul li').on("click",function(){
+												window.location = "?pagination="+ $(this).text();	
+											});
+										});
+																	
+								</script>
                         
 
                     </div>
@@ -271,24 +257,37 @@ $s="";
                             <hr class="orange">
                                                        <ul>
                             
-                               
-                                <li><a href="post_notices.php"> Post Notices</a></li>
-                                <li><a href="post_newarrivals.php"> Post New Arrival</a></li>
-                                <li><a href="post_news.php">Post News And Events</a></li>
-                                <li><a href="logout.php">Logout</a></li>
+                                <li><a href="../services.php">Services</a></li>
+                                <li><a href="../new-arrivals.php">New Arrival</a></li>
                                 
+                                <li><a href="../news.php">News And Events</a></li>
+                                <li><a href="../404.php">Library OPAC</a></li>
+                                <?php if($flag==1)
+                                echo "<li><a href='../admin/logout.php'>Logout</a></li>";
+                                else
+                                    echo "<li><a href='../admin-login.php'>Admin Login</a></li>";
+                                ?>
                             </ul>
                     
-                            <h1 id="other-headline">Suggest Section</h1>
+                       <?php if($flag!=1)
+echo "                            <h1 id='other-headline'>Ask Librarian</h1>
+                            <hr class='orange'>
+                            <ul>
+                            
+                                <li><a href='../query.php'>Submit Query</a></li>
+                                <li><a href='../suggest.php'>Suggest Books</a></li>
+                                
+                            </ul>";
+?>
+                            
+                            <h1 id="other-headline">Registration</h1>
                             <hr class="orange">
                             <ul>
                             
-                                <li><a href="view_query.php">View Query</a></li>
-                                <li><a href="view_suggest.php">View Suggested Books</a></li>
-                             
+                                <li><a href="../assets/files/(staff)membership.doc">Staff</a></li>
+                                <li><a href="../assets/files/Librarymembership.doc">Students</a></li>
+                                
                             </ul>
-                            
-                            
                         </div>
 
                     </div>
@@ -306,7 +305,6 @@ $s="";
 
         <div class="filler">filler</div>
         
-
         <?php
         include('../backend/footer.php');
         ?>

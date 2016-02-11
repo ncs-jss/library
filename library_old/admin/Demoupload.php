@@ -35,6 +35,43 @@ if(!isset($_SESSION['username']))
         <link rel="stylesheet" href="../assets/css/bootstrap.css">
         <link rel="stylesheet" href="../assets/css/main.css">
         <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+
+        <script type="text/javascript">
+          $(document).ready(function{
+            var branch = ['CS', 'IT', 'ME', 'EEE', 'ECE', 'EE', 'MP', 'IC', 'CE'];
+            var year = [ 4,2,3,2];
+
+            $('#course').change(function{
+              var val = $this.val();
+
+              if(val == 'Btech'){
+                var x = '';
+                var y = '';
+
+                for (var i = year[0].length - 1; i >= 0; i--) {
+                   y = '<option value=' + i + '>' + i + '</option>';
+                };
+
+                for (var i = branch.length - 1; i >= 0; i--) {
+                  x = '<option value=' + branch[i] + '>' + branch[i] + '</option>';
+                };
+                $('#branch').html(x);
+                $('#year').html(y);
+
+              }else if(val == 'Mtech'){
+                $('#branch').attr('disabled', 'disabled');
+              }else if(val == 'MBA'){
+
+              }else{
+
+              }
+            });
+
+          });         
+        </script>
+
+
+
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -122,28 +159,19 @@ if(!isset($_SESSION['username']))
      <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
      <input type="hidden" name="completed" value="1">
        Please choose a .pdf to upload: <input type="file" name="image"><br>
-       Please enter the course:    <select name = "course">
+       Please enter the course:    <select name = "course" id = 'course'>
   <option value="btech">Btech</option>
   <option value="MBA">MBA</option>
   <option value="MCA">MCA</option>
   <option value="Mtech">Mtech</option>
 </select><br>
        Please enter the subject of that document: <input type="text" name="subject"><br><br>
-       Please enter the year of that document:    <select name = "year">
+       Please enter the year of that document:    <select name = "year" id = 'year'>
   <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
+  
 </select><br>
-       Please enter the branch:                  <select name = "branch">
-  <option value="cs">CS</option>
-  <option value="it">IT</option>
-  <option value="ec">EC</option>
-  <option value="ee">EE</option>
-   <option value="me">ME</option>
-    <option value="ce">CE</option>
-     <option value="mt">MT</option>
-      <option value="ic">IC</option>
+       Please enter the branch:                  <select name = "branch" id = "branch">
+  
 </select><br>
 <p>
 <?php

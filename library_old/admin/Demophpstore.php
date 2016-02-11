@@ -12,7 +12,7 @@ $db=dbConnect();
       $file_type=$_FILES['image']['type'];
       $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
       
-      $expensions= array("jpeg","jpg","png","pdf");
+      $expensions= array("jpeg","jpg","png");
       
       if(in_array($file_ext,$expensions)=== false){
          $errors[]="extension not allowed, please choose a JPEG or PNG file.";
@@ -29,6 +29,7 @@ if ( ! is_dir($path)) {
     mkdir($path);
 }
          move_uploaded_file($file_tmp,$path.$file_name);
+//echo $path.$file_name;
 
 $course = $_POST['course'];
 $branch = $_POST['branch'];
@@ -44,13 +45,16 @@ $stmt = $db->prepare("INSERT INTO `papers`(`file_name`,`course`,`subject`,`year`
          die("error".mysqli_error($db));
       }
       $_SESSION['info']="Successfully Uploaded";
-      header('Location:upload_question_papers.php');
+     
+//echo $_SESSION['info'];
+     // header('Location:upload_question_papers.php');
         }
         else{
+  //        echo $errors;
          print_r($errors);
       }
    }
- header('location:upload_question_papers.php')
+// header('location:upload_question_papers.php')
 
 
 

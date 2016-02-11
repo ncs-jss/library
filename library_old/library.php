@@ -383,6 +383,21 @@ function display_notices() //only subject is diplayed at front // view notices r
 	return $rownoticesfetched;
 }
 
+function display_papers() //only subject is diplayed at front // view notices remains // on clicking hyper link would display the full message from $rowsfetched same as infocenter
+{
+	$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
+	$sql="SELECT `file_name`,`course`,`subject`,`year`,`branch` FROM `papers`";
+	$check = mysqli_query($db,$sql);
+
+	$rownoticesfetched=array();
+	while ($rows = mysqli_fetch_array($check))  
+	{  
+	  $rownoticesfetched[] = $rows;
+	}
+	mysqli_close($db);
+	return $rownoticesfetched;
+}
+
 function display_booksuggest()
 {
 	session_start();
