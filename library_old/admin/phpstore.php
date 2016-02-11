@@ -29,15 +29,17 @@ if ( ! is_dir($path)) {
     mkdir($path);
 }
          move_uploaded_file($file_tmp,$path.$file_name);
+$file_name = $_POST['file_name'];
 
+$semester = $_POST['semester'];
 $course = $_POST['course'];
 $branch = $_POST['branch'];
 $subject = $_POST['subject'];
 $year = $_POST['year'];
 
-$stmt = $db->prepare("INSERT INTO `papers`(`file_name`,`course`,`subject`,`year`,`branch`) VALUES (?,?,?,?,?)");
+$stmt = $db->prepare("INSERT INTO `papers`(`file_name`,`course`,`semester`,`year`,`branch`,`subject`) VALUES (?,?,?,?,?,?)");
       // echo $sql;
-      $stmt->bind_param('sssss', $file_name,$course,$subject,$year,$branch);
+      $stmt->bind_param('ssssss', $file_name,$course,$semester,$year,$branch,$subject);
       $res=$stmt->execute();  
       if(!$res)
       {

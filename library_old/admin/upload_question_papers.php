@@ -77,6 +77,7 @@ if(!isset($_SESSION['username']))
                                         <li class="active"><a href="../index.php">Home <span class="sr-only">(current)</span></a></li>
                                         <li><a href="../e-resources/index.php">E-Resources</a></li>
                                         <li><a href="../notices/index.php">Notices</a></li> 
+                                          <li><a href="admin/view_question_papers.php">Question Papers</a></li>
                                         <li><a href="../contact/index.php">Contact Us</a></li>
                                         <li><a href="../external-links/index.php">External Links</a></li>
                                     </ul>
@@ -122,20 +123,35 @@ if(!isset($_SESSION['username']))
      <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
      <input type="hidden" name="completed" value="1">
        Please choose a .pdf to upload: <input type="file" name="image"><br>
+        Please enter the subject of the document: <input type="text" name="subject"><br><br>
        Please enter the course:    <select name = "course">
   <option value="btech">Btech</option>
   <option value="MBA">MBA</option>
   <option value="MCA">MCA</option>
   <option value="Mtech">Mtech</option>
-</select><br>
-       Please enter the subject of that document: <input type="text" name="subject"><br><br>
-       Please enter the year of that document:    <select name = "year">
+</select><br><br>
+       Please enter the semester of the document:    <select name = "semester">
   <option value="1">1</option>
   <option value="2">2</option>
   <option value="3">3</option>
   <option value="4">4</option>
-</select><br>
-       Please enter the branch:                  <select name = "branch">
+  <option value="5">4</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+</select><br><br>
+Please enter the year of the document:    <select name = "year">
+<?php
+
+for($i=0;$i<16;$i++)
+{ 
+   $j=$i+2000; ?>
+   <option value="$j"><?php echo $j ?></option>
+<?php }
+?>
+</select><br><br>
+
+       Please enter the branch:     <select name = "branch">
   <option value="cs">CS</option>
   <option value="it">IT</option>
   <option value="ec">EC</option>
@@ -186,6 +202,7 @@ if(!isset($_SESSION['info']))
                                <li><a href="post_notices.php"> Post Notices</a></li>
                                 <li><a href="post_newarrivals.php"> Post New Arrival</a></li>
                                 <li><a href="post_news.php">Post News And Events</a></li>
+                                <li><a href="upload_question_papers.php">Upload Question Paper</a></li>
                                 <li><a href="logout.php">Logout</a></li>
                                 
                             </ul>

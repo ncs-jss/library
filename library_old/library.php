@@ -386,7 +386,7 @@ function display_notices() //only subject is diplayed at front // view notices r
 function display_papers() //only subject is diplayed at front // view notices remains // on clicking hyper link would display the full message from $rowsfetched same as infocenter
 {
 	$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
-	$sql="SELECT `file_name`,`course`,`subject`,`year`,`branch` FROM `papers`";
+	$sql="SELECT `file_name`,`course`,`subject`,`semester`,`year`,`branch` FROM `papers` ORDER BY `year` DESC";
 	$check = mysqli_query($db,$sql);
 
 	$rownoticesfetched=array();

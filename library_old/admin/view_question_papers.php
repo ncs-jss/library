@@ -77,6 +77,7 @@ $s="";
                                        <li class="active"><a href="../index.php">Home <span class="sr-only">(current)</span></a></li>
                                         <li><a href="../e-resources/index.php">E-Resources</a></li>
                                         <li><a href="../notices/index.php">Notices</a></li>	
+                                        <li><a href="admin/view_question_papers.php">Question Papers</a></li>
                                         <li><a href="../contact/index.php">Contact Us</a></li>
                                         <li><a href="../external-links/index.php">External Links</a></li>
                                         <?php if($flag==1)
@@ -142,7 +143,7 @@ $s="";
 																			
 											
 										</script>
-                                        <a href='../notices/index.php' class="btn btn-primary fa"> Back</a>
+                                        <a href='../admin/view_question_papers.php' class="btn btn-primary fa"> Back</a>
 
 									
                                 </form>
@@ -155,14 +156,15 @@ $s="";
                         
                         <div class="row">
                         <form action="delete_notice.php" method="post">
-                            <table class="table table-striped table-row " id="data">
+                            <table class="table table-striped table-row table2" id="data">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         
-                                        <th>File Name</th>
+                                        <th>Subject</th>
                                         <th>Course</th>
                                         <th>Year</th>
+                                        <th>Semester</th>
                                         <th>Branch</th>
                                         <th>Download</th> 
                                     </tr>
@@ -181,9 +183,10 @@ $s="";
                                     <tr>
                                         <th scope="row"><?php echo $i+1 ?></th>
                                         
-                                        <td><?php echo $rownoticefetched[$i]['file_name']?> </td>
+                                        <td><?php echo $rownoticefetched[$i]['subject']?> </td>
                                         <td><?php echo $rownoticefetched[$i]['course']?> </td>
                                         <td><?php echo $rownoticefetched[$i]['year']?> </td>
+                                        <td><?php echo $rownoticefetched[$i]['semester']?> </td>
                                         <td><?php echo $rownoticefetched[$i]['branch']?> </td>
                                         <td><a href="./images/<?php echo $rownoticefetched[$i]['file_name']?>">Download</a></td>
                                         <?php }?>
@@ -196,9 +199,10 @@ $s="";
                                     <tr>
                                         <th scope="row"><?php echo $i+1 ?></th>
                                         
-                                          <td><?php echo $rownoticefetched[$i]['file_name']?> </td>
+                                          <td><?php echo $rownoticefetched[$i]['subject']?> </td>
                                         <td><?php echo $rownoticefetched[$i]['course']?> </td>
                                         <td><?php echo $rownoticefetched[$i]['year']?> </td>
+                                        <td><?php echo $rownoticefetched[$i]['semester']?> </td>
                                         <td><?php echo $rownoticefetched[$i]['branch']?> </td>
                                         <td><a href="./images/<?php echo $rownoticefetched[$i]['file_name']?>">Download</a></td>
                                        

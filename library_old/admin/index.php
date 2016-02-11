@@ -1,7 +1,11 @@
 <?php
 session_start();
-if(!isset($_SESSION['username']))
+$flag=0;
+session_start();
+if(isset($_SESSION['username']))
 {
+    $flag=1;
+
 		$_SESSION['error_admin'] = "Login to view admin page";
 		header('Location:../index.php');	
 }
@@ -66,7 +70,9 @@ if(!isset($_SESSION['username']))
                                     <ul class="nav navbar-nav navbar-right">
                                         <li class="active"><a href="../index.php">Home <span class="sr-only">(current)</span></a></li>
                                         <li><a href="../e-resources/index.php">E-Resources</a></li>
-                                        <li><a href="../notices/index.php">Notices</a></li>	
+                                        <li><a href="../notices/index.php">Notices</a></li>
+                                          <li><a href="admin/view_question_papers.php">Question Papers</a></li>
+
                                         <li><a href="../contact/index.php">Contact Us</a></li>
                                         <li><a href="../external-links/index.php">External Links</a></li>
                                     </ul>
@@ -116,21 +122,42 @@ if(!isset($_SESSION['username']))
                             <h1>Navigation</h1>
                             <hr class="orange">
                                                        <ul>
-                            
-                               <li><a href="post_notices.php"> Post Notices</a></li>
-                                <li><a href="post_newarrivals.php"> Post New Arrival</a></li>
-                                <li><a href="post_news.php">Post News And Events</a></li>
-                                 <li><a href="upload_question_papers.php">Upload question papers</a></li>
 
-                                <li><a href="logout.php">Logout</a></li>
+
+
+                                 <?php if($flag==1)
+                                 {
+                                echo "<li><a href='post_notices.php'> Post Notices</a></li>";
+                                echo "<li><a href='post_newarrivals.php'> Post New Arrival</a></li>";
+                                echo "<li><a href='post_news.php'>Post News And Events</a></li>";
+                                echo "<li><a href='upload_question_papers.php'>Upload question papers</a></li>";
+                                echo "<li><a href='logout.php'>Logout</a></li>";
                                 
+                                 }
+                                 else{
+                                    echo "<li><a href='../services.php'>Services</a></li>";
+                                echo "<li><a href='../new-arrivals.php'>New Arrival</a></li>";
+                                
+                                echo "<li><a href='../news.php'>News And Events</a></li>";
+                                echo "<li><a href='../404.php'>Library OPAC</a></li>";
+                                echo "<li><a href='../admin-login.php'>Admin Login</a></li>";
+                                
+
+                                 }                       
+                            
+                              
+                                
+                                ?>
+
+                                        
                             </ul>
                            <h1 id='other-headline'>Suggest Sections</h1>
                             <hr class='orange'>
                             <ul>
                             
-                                <li><a href='view_query.php'>View Query</a></li>
-                                <li><a href='view_suggest.php'>View Suggested Books</a></li>
+                               <?php echo "<li><a href="view_query.php">View Query</a></li>"
+                                echo "<li><a href="view_suggest.php">View Suggested Books</a></li>"
+                                ?>
                                 
                             </ul>
                             

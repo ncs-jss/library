@@ -70,6 +70,8 @@ if(!isset($_SESSION['username']))
                                         <li class="active"><a href="../index.php">Home <span class="sr-only">(current)</span></a></li>
                                         <li><a href="../e-resources/index.php">E-Resources</a></li>
                                         <li><a href="../notices/index.php">Notices</a></li>	
+                                          <li><a href="admin/view_question_papers.php">Question Papers</a></li>
+                                        
                                         <li><a href="../contact/index.php">Contact Us</a></li>
                                         <li><a href="../external-links/index.php">External Links</a></li>
                                     </ul>
@@ -156,7 +158,14 @@ if(!isset($_SESSION['username']))
                                <li><a href="post_notices.php"> Post Notices</a></li>
                                 <li><a href="post_newarrivals.php"> Post New Arrival</a></li>
                                 <li><a href="post_news.php">Post News And Events</a></li>
-                                <li><a href="logout.php">Logout</a></li>
+                                
+                                 <li><a href="upload_question_papers.php">Upload question papers</a></li>
+
+                                <?php if($flag==1)
+                                 echo "<li><a href='../admin/logout.php'>Logout</a></li>";
+                                else
+                                    echo "<li><a href='../admin-login.php'>Admin Login</a></li>";
+                                ?>
                                 
                             </ul>
                     
