@@ -67,6 +67,7 @@ session_start();
                                          <li class="active"><a href="index.php">Home <span class="sr-only">(current)</span></a></li>
                                         <li><a href="e-resources/index.php">E-Resources</a></li>
                                         <li><a href="notices/index.php">Notices</a></li>
+                                        <li><a href="admin/view_question_papers.php">Question Papers</a></li>
 
                                         <li><a href="contact/index.php">Contact Us</a></li>
                                         <li><a href="external-links/index.php">External Links</a></li>
@@ -151,21 +152,11 @@ session_start();
                         <div class="row sidebar">
                         
                             <h1>Navigation</h1>
-                            <hr class="orange">
-                                                    <ul>
+                            <hr class="orange"><ul>
 
 
 
-                                 <?php if($flag==1)
-                                 {
-                                echo "<li><a href='admin/post_notices.php'> Post Notices</a></li>";
-                                echo "<li><a href='admin/post_newarrivals.php'> Post New Arrival</a></li>";
-                                echo "<li><a href='admin/post_news.php'>Post News And Events</a></li>";
-                                echo "<li><a href='admin/upload_question_papers.php'>Upload question papers</a></li>";
-                                echo "<li><a href='admin/logout.php'>Logout</a></li>";
-                                
-                                 }
-                                 else{
+                                 <?php
                                     echo "<li><a href='services.php'>Services</a></li>";
                                 echo "<li><a href='new-arrivals.php'>New Arrival</a></li>";
                                 
@@ -181,8 +172,9 @@ session_start();
                                 
                                  </ul>";
 
-                                 }                       ?></ul>
-                            
+                                                     ?></ul>
+                    
+ 
                             <h1 id="other-headline">Registration</h1>
                             <hr class="orange">
                             <ul>

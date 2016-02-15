@@ -182,7 +182,7 @@ if(isset($_SESSION['username']))
                         
                             <h1>Navigation</h1>
                             <hr class="orange">
-                             <ul>
+<ul>
 
 
 
@@ -194,8 +194,8 @@ if(isset($_SESSION['username']))
                                 echo "<li><a href='admin/upload_question_papers.php'>Upload question papers</a></li>";
                                 echo "<li><a href='admin/logout.php'>Logout</a></li>";
 
-                                echo "<h1 id="other-headline">Suggest Section</h1>
-                            <hr class="orange">
+                                echo "<h1 id='other-headline'>Suggest Section</h1>
+                            <hr class='orange'>
                             <ul>
                             
                                 <li><a href='view_query.php'>View Query</a></li>
@@ -223,8 +223,7 @@ if(isset($_SESSION['username']))
 
                                  }                       ?></ul>
                     
- 
-                            
+                             
                             <h1 id="other-headline">Registration</h1>
                             <hr class="orange">
                             <ul>

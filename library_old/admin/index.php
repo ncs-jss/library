@@ -71,7 +71,7 @@ if(isset($_SESSION['username']))
                                         <li class="active"><a href="../index.php">Home <span class="sr-only">(current)</span></a></li>
                                         <li><a href="../e-resources/index.php">E-Resources</a></li>
                                         <li><a href="../notices/index.php">Notices</a></li>
-                                          <li><a href="admin/view_question_papers.php">Question Papers</a></li>
+                                          <li><a href="view_question_papers.php">Question Papers</a></li>
 
                                         <li><a href="../contact/index.php">Contact Us</a></li>
                                         <li><a href="../external-links/index.php">External Links</a></li>
