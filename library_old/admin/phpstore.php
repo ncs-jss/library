@@ -4,60 +4,78 @@
 include('../connect.php');
 $db=dbConnect();
 
-   if(isset($_FILES['image'])){
-      $errors= array();
-      $file_name = $_FILES['image']['name'];
-      $file_size =$_FILES['image']['size'];
-      $file_tmp =$_FILES['image']['tmp_name'];
-      $file_type=$_FILES['image']['type'];
-      $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
-      
-      $expensions= array("jpeg","jpg","png","pdf");
-      
-      if(in_array($file_ext,$expensions)=== false){
-         $errors[]="extension not allowed, please choose a JPEG or PNG file.";
-      }
-      
-      if($file_size > 2097152){
-         $errors[]='File size must be excately 2 MB';
-      }
-      
-      if(empty($errors)==true){
-         $path = './images/';
+if(isset($_FILES['image'])){
+  $errors= array();
+  $file_name = $_FILES['image']['name'];
+  $file_size =$_FILES['image']['size'];
+  $file_tmp =$_FILES['image']['tmp_name'];
+  $file_type=$_FILES['image']['type'];
 
-if ( ! is_dir($path)) {
+  $file_name_ext = explode('.',$_FILES['image']['name']);
+
+  $file_ext=strtolower(end($file_name_ext));
+
+  $expensions= array("jpeg","jpg","png","pdf","docx","doc");
+
+  if(in_array($file_ext,$expensions)=== false){
+   $errors[]="extension not allowed, please choose a JPEG, PDF or PNG file.";
+ }
+
+ if($file_size > 2097152){
+   $errors[]='File size must be less than 2 MB';
+ }
+
+ if(empty($errors)==true){
+   $path = './images/';
+
+   if ( ! is_dir($path)) {
     mkdir($path);
-}
-         move_uploaded_file($file_tmp,$path.$file_name);
-$file_name = $_POST['file_name'];
+  }
+  move_uploaded_file($file_tmp,$path.$file_name);
+  //var_dump($_POST);
+  //die();
+  $file_name = $file_name;
 
-$semester = $_POST['semester'];
-$course = $_POST['course'];
-$branch = $_POST['branch'];
-$subject = $_POST['subject'];
-$year = $_POST['year'];
+  $semester = $_POST['semester'];
+  $course = $_POST['course'];
+  $branch = $_POST['branch'];
+  $subject = $_POST['subject'];
+  $year = $_POST['year'];
 
-$stmt = $db->prepare("INSERT INTO `papers`(`file_name`,`course`,`semester`,`year`,`branch`,`subject`) VALUES (?,?,?,?,?,?)");
+  $stmt = $db->prepare("INSERT INTO `papers`(`file_name`,`course`,`semester`,`year`,`branch`,`subject`) VALUES (?,?,?,?,?,?)");
       // echo $sql;
-      $stmt->bind_param('ssssss', $file_name,$course,$semester,$year,$branch,$subject);
-      $res=$stmt->execute();  
-      if(!$res)
-      {
-         die("error".mysqli_error($db));
-      }
-      $_SESSION['info']="Successfully Uploaded";
-      header('Location:upload_question_papers.php');
-        }
-        else{
-         print_r($errors);
-      }
-   }
- header('location:upload_question_papers.php')
+  /*echo gettype($file_name);
+  echo gettype($course);
+  echo gettype($semester);
+  echo gettype($year);
+  echo gettype($branch);
+  echo gettype($subject);
+  die();*/
+
+  if($stmt == false){
+    echo 'some error';
+    die();
+  }
+  
+  $stmt->bind_param('ssssss', $file_name,$course,$semester,$year,$branch,$subject);
+  $res=$stmt->execute();  
+  if(!$res)
+  {
+   die("error".mysqli_error($db));
+ }
+ $_SESSION['info']="Successfully Uploaded";
+ header('Location:upload_question_papers.php');
+}
+else{
+ print_r($errors);
+}
+}
+header('location:upload_question_papers.php')
 
 
 
 
-   
+
     // if ($_REQUEST[completed] == 1) {
 //         move_uploaded_file($_FILES['imagefile']['tmp_name'],"latest.img");
 //         $instr = fopen("latest.img","rb");
