@@ -43,20 +43,12 @@ if(isset($_FILES['image'])){
   $year = $_POST['year'];
 
   $stmt = $db->prepare("INSERT INTO `papers`(`file_name`,`course`,`semester`,`year`,`branch`,`subject`) VALUES (?,?,?,?,?,?)");
-      // echo $sql;
-  /*echo gettype($file_name);
-  echo gettype($course);
-  echo gettype($semester);
-  echo gettype($year);
-  echo gettype($branch);
-  echo gettype($subject);
-  die();*/
 
   if($stmt == false){
-    echo 'some error';
+    echo 'There is some problem in connecting to the db';
     die();
   }
-  
+
   $stmt->bind_param('ssssss', $file_name,$course,$semester,$year,$branch,$subject);
   $res=$stmt->execute();  
   if(!$res)

@@ -121,54 +121,71 @@
                        <input type="hidden" name="completed" value="1">
                        Please choose a .pdf to upload: <input type="file" name="image" required><br>
                        Please enter the subject of the document: <input type="text" name="subject" required><br><br>
-                       Please enter the course:    <select name = "course" required>
-                       <option value="btech">Btech</option>
-                       <option value="MBA">MBA</option>
-                       <option value="MCA">MCA</option>
-                       <option value="Mtech">Mtech</option>
-                     </select><br><br>
-                     Please enter the semester of the document:    <select name = "semester" required>
-                     <option value="1">1</option>
-                     <option value="2">2</option>
-                     <option value="3">3</option>
-                     <option value="4">4</option>
-                     <option value="5">4</option>
-                     <option value="6">6</option>
-                     <option value="7">7</option>
-                     <option value="8">8</option>
-                   </select><br><br>
-                   Please enter the year of the document:    <select name = "year" required>
-                   <?php
+                       Please enter the course:    
 
-                   for($i=0;$i<16;$i++)
-                   { 
-                     $j=$i+2000; ?>
-                     <option value="$j"><?php echo $j ?></option>
-                     <?php }
-                     ?>
-                   </select><br><br>
+                       <select id = "course" name = "course" onchange = "funk()" required>
+                         <option value="1">Btech</option>
+                         <option value="2">MBA</option>
+                         <option value="3">MCA</option>
+                         <option value="4">Mtech</option>
+                       </select><br><br>
 
-                   Please enter the branch:     <select name = "branch" required>
-                   <option value="cs">CS</option>
-                   <option value="it">IT</option>
-                   <option value="ec">EC</option>
-                   <option value="ee">EE</option>
-                   <option value="me">ME</option>
-                   <option value="ce">CE</option>
-                   <option value="mt">MT</option>
-                   <option value="ic">IC</option>
-                 </select><br>
-                 <p>
-                  <?php
+                       <div id = "sem">Please enter the semester of the document:    
 
+                         <select id = "semester" name = "semester" required>
+                           <option value="1">1</option>
+                           <option value="2">2</option>
+                           <option value="3">3</option>
+                           <option value="4">4</option>
+                           <option value="5">4</option>
+                           <option value="6">6</option>
+                           <option value="7">7</option>
+                           <option value="8">8</option>
+                         </select><br><br></div>
 
-                  if(!isset($_SESSION['info']))
-                  {
-                    echo $_SESSION['info'];
-                  }
-                  ?>
-                </p>
-                <input type="submit" class="btn btn-primary"></formsm><br>
+                         <div id= "yr">
+                           Please enter the year of the document:    
+
+                           <select id ="year" name = "year" required>
+                             <?php
+
+                             for($i=0;$i<16;$i++)
+                             { 
+                               $j=$i+2000; ?>
+                               <option value="<?php echo $j ?>"><?php echo $j ?></option>
+                               <?php }
+                               ?>
+                             </select><br><br>
+
+                           </div>
+
+                           <div id = "br">
+                            Please enter the branch:     
+                            <select name = "branch" required>
+                             <?php
+                             include('../library.php');
+                             $db = connect(); 
+                             $branches = $db->query("SELECT * from branch_name");
+                             while($branch = $branches->fetch_array())
+                             {
+                              ?>
+                              <option val="<?php echo $branch['id']?>"><?php echo $branch['branch'] ?></option>
+                              <?php
+                              echo "<br>";
+                            }
+                            ?>
+
+                          </select><br>
+                        </div>
+                        <p>
+                          <?php
+                          if(!isset($_SESSION['info']))
+                          {
+                            echo $_SESSION['info'];
+                          }
+                          ?>
+                        </p>
+                        <input type="submit" class="btn btn-primary"></formsm><br>
 
 
 
@@ -219,9 +236,6 @@
 
                     <div class="col-sm-1"></div>
 
-
-
-
                   </div>
 
                 </div>
@@ -230,6 +244,33 @@
 
               <div class="filler">filler</div>
 
+              <script type="text/javascript">
+              function funk(){
+                var caller = document.getElementById('course');
+                var br = document.getElementById('br');
+                var sems = 0;
+                console.log(caller.value);
+                if(caller.value == 1){
+                  sems = 8;
+                  console.log(sems);
+                  br.style.display = 'block';
+                }else if(caller.value == 2 || caller.value == 4){
+                  sems = 4;
+                  console.log(sems);
+                  br.style.display = 'none';
+                }else{
+                  sems = 6;
+                  console.log(sems);
+                  br.style.display = 'none';
+                }
+                var x ='';
+                var i = 0;
+                while(sems > i++){
+                  x = x+ "<option value="+i+">"+i+"</option>";
+                }
+                document.getElementById('semester').innerHTML = x;
+              }
+              </script>
 
               <?php   
 
