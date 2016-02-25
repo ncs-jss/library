@@ -1,6 +1,4 @@
 
-<section class="e-resources">
-
   <div class="container-fluid"><?php
 
   session_start();
@@ -95,6 +93,8 @@
 
             </header>
 
+
+<section class="e-resources">
 
             <div class="row content">
 
