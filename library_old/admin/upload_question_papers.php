@@ -249,18 +249,14 @@
                 var caller = document.getElementById('course');
                 var br = document.getElementById('br');
                 var sems = 0;
-                console.log(caller.value);
                 if(caller.value == 1){
                   sems = 8;
-                  console.log(sems);
                   br.style.display = 'block';
                 }else if(caller.value == 2 || caller.value == 4){
                   sems = 4;
-                  console.log(sems);
                   br.style.display = 'none';
                 }else{
                   sems = 6;
-                  console.log(sems);
                   br.style.display = 'none';
                 }
                 var x ='';
