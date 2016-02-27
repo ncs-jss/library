@@ -223,7 +223,7 @@ $s="";
                   <td><?php echo $a['semester'] ?></td>
                   <td><?php echo $a['file_name'] ?></td>
                   <td>
-                    <a href="images/<?php echo $a['file_name'] ?>">Download</a>
+                    <a href="download_file.php?file=<?php echo $a['id'] ?>">Download</a>
                   </td>
                 </tr>
                 <?php

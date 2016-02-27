@@ -32,7 +32,8 @@ if(isset($_FILES['image'])){
     mkdir($path);
   }
   $tmp_name = str_replace([' ', '.', '-'], '_', $_POST['subject']);
-  $file_name2 = $tmp_name.'_'.$_POST['year'].'.'.$file_ext;
+  $file_name2 = $tmp_name.'_'.$_POST['semester'].
+                'sem_'.$_POST['year'].'.'.$file_ext;
 
   move_uploaded_file($file_tmp,$path.$file_name2);
   //var_dump($_POST);
