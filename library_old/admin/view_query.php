@@ -24,13 +24,12 @@ $s="";
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>JSSATEN | Library</title>
-        <meta name="description" content="WalksinDelhi will enthral you with the scintillating view of heart of 'Dilli' ">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+        <!-- <script src="//code.jquery.com/jquery-1.11.2.min.js"></script> -->
         <script src="assets/js/vendor/jquery-1.11.1.min.js"></script>
-        
+
         <link rel="stylesheet" href="../assets/css/bootstrap.css">
         <link rel="stylesheet" href="../assets/css/main.css">
         <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
@@ -41,13 +40,13 @@ $s="";
         <![endif]-->
 
         <!-- Add your site or application content here -->
-       
+
         <header>
-            
+
             <div class="container-fluid">
-            
+
                 <div class="row">
-                
+
                     <!-- nav bar starts -->
                     <div class="col-sm-1"></div>
                     <div class="col-sm-10">
@@ -65,7 +64,7 @@ $s="";
                                     </button>
                                     <a class="navbar-brand" href="../index.php">
                                         <img class="img-responsive" src="../assets/img/logo.png" width="100px"><p>Library</p>
-                                    </a> 
+                                    </a>
 
                                 </div>
 
@@ -75,7 +74,7 @@ $s="";
                                     <ul class="nav navbar-nav navbar-right">
                                        <li class="active"><a href="../index.php">Home <span class="sr-only">(current)</span></a></li>
                                         <li><a href="../e-resources/index.php">E-Resources</a></li>
-                                        <li><a href="../notices/index.php">Notices</a></li> 
+                                        <li><a href="../notices/index.php">Notices</a></li>
                                         <li><a href="view_question_papers.php">Question Papers</a></li>
 
                                         <li><a href="../contact/index.php">Contact Us</a></li>
@@ -84,21 +83,21 @@ $s="";
 
                                 </div><!-- /.navbar-collapse -->
                             </div><!-- /.container-fluid -->
-                        </nav>    
+                        </nav>
 
                     </div>
 
                     <!-- nav bar ends -->
                     <div class="col-sm-1"></div>
-                
-                </div>    
-            
-            
+
+                </div>
+
+
             </div>
-        
+
         </header>
-        
-        
+
+
 
 
         <section class="e-resources">
@@ -115,13 +114,13 @@ $s="";
 
                             <h2>Queries</h2>
                             <div class="col-sm-4 ">
-                                
 
-                                
+
+
                             </div>
                             <div class="col-sm-2"></div>
                             <div class="col-sm-6 search">
-                            
+
 
                                 <form class="navbar-form " role="search">
                                     <div class="form-group">
@@ -130,26 +129,26 @@ $s="";
                                     <button type="submit" class="btn btn-primary fa fa-search "></button>
                                     <script>
                                             $( 'input[name="search"]').change(function() {
-                                            window.location = <?php 
-                                            
-                                            
+                                            window.location = <?php
+
+
                                             if(isset($_REQUEST['pages']))
-                                                echo '"?pages='.$_REQUEST['pages'].'&"+' ;  
+                                                echo '"?pages='.$_REQUEST['pages'].'&"+' ;
                                                 ?>"?search="+ $( 'input[name="search"]').val();
                                                                             });
-                                                                            
-                                            
+
+
                                         </script>
                                         <a href='view_query.php' class="btn btn-primary fa"> Back</a>
 
                                 </form>
-                                
+
                             </div>
-                            
-                            
+
+
 
                         </div>
-                        
+
                         <div class="row">
                         <form action="delete_query.php" method="post">
                             <table class="table table-striped table-row table1" id="data">
@@ -166,17 +165,17 @@ $s="";
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php 
+                                    <?php
                                     if(isset($_REQUEST['search']))
                                     {
                                         while($i<$count) {?>
-                                        <?php 
+                                        <?php
                                         if(strcmp($_REQUEST['search'],$rowqueryfetched[$i]['name'])==0)
                                         {
                                         ?>
                                     <tr>
                                         <th scope="row"><?php echo $i+1 ?></th>
-                                        
+
                                         <td><?php echo $rowqueryfetched[$i]['name']?> </td>
                                         <td><?php echo $rowqueryfetched[$i]['rollno']?> </td>
                                         <td><?php echo $rowqueryfetched[$i]['course']?> </td>
@@ -186,7 +185,7 @@ $s="";
                                         <td><?php echo $rowqueryfetched[$i]['date_posted']?> </td>
                                         <?php if ($flag==1) {
                                         $s=$rowqueryfetched[$i]['id'];
-                                       
+
                                         echo "<td><input type=\"checkbox\" name=\"checklist[]\" value=\"$s\"></td>";
                                          }}?>
 
@@ -212,14 +211,14 @@ $s="";
                             <input type="submit" value="Delete Selected" id="delete" class="btn btn-primary fa fa-search " name="delete" style="margin-left:750px;">
                             </form>
                         </div>
-                        
+
                                 <script>
                                         $(document).ready(function(){
                                             $('nav ul li').on("click",function(){
-                                                window.location = "?pagination="+ $(this).text();   
+                                                window.location = "?pagination="+ $(this).text();
                                             });
                                         });
-                                                                    
+
                                 </script>
 
                                 <script>
@@ -237,7 +236,7 @@ $s="";
             $('#data tbody tr').slice(0, rowsShown).show();
             $('#nav a:first').addClass('active');
             $('#nav a').bind('click', function(){
- 
+
                 $('#nav a').removeClass('active');
                 $(this).addClass('active');
                 var currPage = $(this).attr('rel');
@@ -248,9 +247,9 @@ $s="";
             });
         });
     </script>
-                        
-                        
-                        
+
+
+
 
                     </div>
 
@@ -261,25 +260,25 @@ $s="";
                             <h1>Navigation</h1>
                             <hr class="orange">
                                                        <ul>
-                            
-                               
+
+
                                 <li><a href="post_notices.php"> Post Notices</a></li>
                                 <li><a href="post_newarrivals.php"> Post New Arrival</a></li>
                                 <li><a href="post_news.php">Post News And Events</a></li>
                                 <li><a href="logout.php">Logout</a></li>
-                                
+
                             </ul>
-                    
+
                             <h1 id="other-headline">Suggest Section</h1>
                             <hr class="orange">
                             <ul>
-                            
+
                                 <li><a href="view_query.php">View Query</a></li>
                                 <li><a href="view_suggest.php">View Suggested Books</a></li>
-                             
+
                             </ul>
-                            
-                            
+
+
                         </div>
 
                     </div>
@@ -296,7 +295,7 @@ $s="";
         </section>
 
         <div class="filler">filler</div>
-        
+
 
         <?php
         include('../backend/footer.php');

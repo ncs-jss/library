@@ -3,7 +3,7 @@ $db="";
 //validation remains please complete that part
 function connect()
 {
-	$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
+	$db = mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
 	return $db;
 }
 
@@ -18,11 +18,11 @@ function login()
 	$passError="";
 	$username="";
 	$password="";
-	
-	if(isset($_POST['submit'])) 
+
+	if(isset($_POST['submit']))
 	{
 		// Checking null values in message.
-	 	if (empty($_POST["username"]))	
+		if (empty($_POST["username"]))
 		{
 			$nameError = "Name is required";
 			$errors = 1;
@@ -32,7 +32,7 @@ function login()
 			$passError = "Password is required";
 			$errors = 1;
 		}
-		
+
 		if($errors==0)
 		{
 			//validation check goes here #
@@ -61,7 +61,7 @@ function login()
 
 				if (strcmp($username,$name)!=0)
 				{
-					$passError="Wrong Password, Please Typein Correct Passwords ";					
+					$passError="Wrong Password, Please Typein Correct Passwords ";
 				}
 			}
 		}
@@ -83,13 +83,13 @@ function logout()
 
 function post_notices()
 {
-$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
-session_start();
-if(!isset($_SESSION['username']))
+	$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
+	session_start();
+	if(!isset($_SESSION['username']))
 	{
 		$_SESSION['error_admin'] = "Login to view admin page";
 		echo $_SESSION['error_admin'];
-		//header('Location:../index.php');	
+		//header('Location:../index.php');
 	}
 if(isset($_POST['arrivalpost']))					//Check for Key to ensure secure access to page only
 {
@@ -128,17 +128,17 @@ if (isset($_POST('noticespost'))) //check for the key
 	$errmessage="";
 	$errsubject="";
 
-	if (empty($_POST['message'])) 
+	if (empty($_POST['message']))
 	{
 		$errmessage="Please Enter the message"; //display the error message correspondingly
 		$error_post=1;
 	}
-	if (empty($_POST['subject'])) 
+	if (empty($_POST['subject']))
 	{
 		$errsubject="Please Enter the subject";
 		$error_post=1;
 	}
-	if ($error_post==0) 
+	if ($error_post==0)
 	{
 		$value=$_POST['message']; //message contains the body of notices or posts
 		$subject=$_POST['subject'];// contains short discription of notices or message
@@ -160,8 +160,8 @@ else
 	$_SESSION['admin_error']="Error! Please fill out the form for submitting a new notices or contact NCS for technical support";
 	header('Location: ');
 }
-	
-if (isset($_POST('submit')) & isset($_POST('methods')) & $_POST('methods')=='posts') 
+
+if (isset($_POST('submit')) & isset($_POST('methods')) & $_POST('methods')=='posts')
 {
 	//code for putting values in database
 	$value=""; //message contains the body of notices or posts
@@ -171,17 +171,17 @@ if (isset($_POST('submit')) & isset($_POST('methods')) & $_POST('methods')=='pos
 	$error_post=0;
 	$errmessage="";
 	$errsubject="";
-	if (empty($_POST['message'])) 
+	if (empty($_POST['message']))
 	{
 		$errmessage="Please Enter the message"; //display the error message correspondingly
 		$error_post=1;
 	}
-	if (empty($_POST['subject'])) 
+	if (empty($_POST['subject']))
 	{
 		$errsubject="Please Enter the subject";
 		$error_post=1;
 	}
-	if ($error_post==0) 
+	if ($error_post==0)
 	{
 		$value=$_POST['message']; //message contains the body of notices or posts
 		$subject=$_POST['subject'];// contains short discription of notices or message
@@ -196,7 +196,7 @@ if (isset($_POST('submit')) & isset($_POST('methods')) & $_POST('methods')=='pos
 		{
 			$_SESSION['error'] ="Failed to submit Posts. \n Please Try Again !";
 		}
-	}	
+	}
 }
 else
 {
@@ -211,18 +211,18 @@ function post_arrivals()
 	if(!isset($_SESSION['username']))
 	{
 		$_SESSION['error_admin'] = "Login to view admin page";
-		header('Location:');	
+		header('Location:');
 	}
-$db=connect();
+	$db=connect();
 
 //Back-end processing for new arrivals posted by admin
 if(isset($_POST['arrivalpost']))					//Check for Key to ensure secure access to page only
 {
 	$title=$_POST['title'];
-	$date_posted=date('Y/m/d'); 
+	$date_posted=date('Y/m/d');
 
 	$sql="INSERT INTO `arrivals`(`id`,`title`,`date_of_arrival`)
-		VALUES ('$title','$date_posted')";
+	VALUES ('$title','$date_posted')";
 	$res=mysqli_query($db,$sql);
 	if(!$res)
 	{
@@ -243,21 +243,21 @@ function post_news()
 {
 	session_start();
 
-if(!isset($_SESSION['username']))
+	if(!isset($_SESSION['username']))
 	{
 		$_SESSION['error_admin'] = "Login to view admin page";
-		header('Location:');	
+		header('Location:');
 	}
-$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
+	$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
 //Back-end processing for news posted by admin
 if(isset($_POST['newspost']))					//Check for Key to ensure secure access to page only
 {
 	$news=$_POST['title'];
 	$details=$_POST['description'];
-	$date_posted=date('Y/m/d'); 
+	$date_posted=date('Y/m/d');
 
 	$sql="INSERT INTO `news`(`id`,`news`,`details`,`date_posted`)
-		VALUES ('$news','$details','$date_posted')";
+	VALUES ('$news','$details','$date_posted')";
 	$res=mysqli_query($db,$sql);
 	if(!$res)
 	{
@@ -290,21 +290,21 @@ function query() //validation remains
 		$message=$_POST['message'];
 		$sql="INSERT INTO `query` (	`id`,`name`,`email`,`college`,`rollno`,`
 			course`,`branch`,`message`)
-		VALUES ('$name','$email','$college','$rollno','$course','$branch','$message')";
-		$res=mysqli_query($db,$sql);
-		if(!$res)
-			{
-				die("error".mysqli_error($db));
-			}
-		mysqli_close($db);
-		$_SESSION['info']="Your query has been recorded and will soon be addressed through e-mail... Thank You";
+VALUES ('$name','$email','$college','$rollno','$course','$branch','$message')";
+$res=mysqli_query($db,$sql);
+if(!$res)
+{
+	die("error".mysqli_error($db));
+}
+mysqli_close($db);
+$_SESSION['info']="Your query has been recorded and will soon be addressed through e-mail... Thank You";
+header('Location: ');
+}
+else
+{
+	$_SESSION['error']="Please fill out the form for submitting a query";
 	header('Location: ');
-	}
-	else
-	{
-		$_SESSION['error']="Please fill out the form for submitting a query";
-		header('Location: ');
-	}
+}
 }
 
 function suggest() // validation remains
@@ -321,7 +321,7 @@ function suggest() // validation remains
 		$volume=$_POST['volume'];
 		$review=$_POST['review'];
 		$sql="INSERT INTO `suggest`(`bookname`,`author`,`publisher`,`edition`,`volume`,`review`) VALUES ('$bookname','$author','$publisher','$edition','$volume','$review')";
-			echo $sql;
+		echo $sql;
 		$res=mysqli_query($db,$sql);
 		if(!$res)
 		{
@@ -329,12 +329,12 @@ function suggest() // validation remains
 		}
 		mysqli_close($db);
 		$_SESSION['info']="Thank You for your suggestion, it has been recorded successfully";
-	header('Location:../index.html ');
+		header('Location:../index.html ');
 	}
 	else
 	{
 		$_SESSION['error']="Please fill out the form for submitting a suggestion";
-	header('Location:suggest.php');
+		header('Location:suggest.php');
 	}
 }
 
@@ -345,9 +345,9 @@ function display_news()
 	$check = mysqli_query($db,$sql);
 
 	$rownewsfetched=array();
-	while ($rows = mysqli_fetch_array($check))  
-	{  
-	  $rownewsfetched[] = $rows;
+	while ($rows = mysqli_fetch_array($check))
+	{
+		$rownewsfetched[] = $rows;
 	}
 	mysqli_close($db);
 	return $rownewsfetched;
@@ -360,9 +360,9 @@ function display_arrivals()
 	$check = mysqli_query($db,$sql);
 
 	$rowarrivalsfetched=array();
-	while ($rows = mysqli_fetch_array($check))  
-	{  
-	  $rowarrivalsfetched[] = $rows;
+	while ($rows = mysqli_fetch_array($check))
+	{
+		$rowarrivalsfetched[] = $rows;
 	}
 	mysqli_close($db);
 	return $rowarrivalsfetched;
@@ -375,9 +375,9 @@ function display_notices() //only subject is diplayed at front // view notices r
 	$check = mysqli_query($db,$sql);
 
 	$rownoticesfetched=array();
-	while ($rows = mysqli_fetch_array($check))  
-	{  
-	  $rownoticesfetched[] = $rows;
+	while ($rows = mysqli_fetch_array($check))
+	{
+		$rownoticesfetched[] = $rows;
 	}
 	mysqli_close($db);
 	return $rownoticesfetched;
@@ -390,9 +390,9 @@ function display_papers() //only subject is diplayed at front // view notices re
 	$check = mysqli_query($db,$sql);
 
 	$rownoticesfetched=array();
-	while ($rows = mysqli_fetch_array($check))  
-	{  
-	  $rownoticesfetched[] = $rows;
+	while ($rows = mysqli_fetch_array($check))
+	{
+		$rownoticesfetched[] = $rows;
 	}
 	mysqli_close($db);
 	return $rownoticesfetched;
@@ -404,22 +404,22 @@ function display_booksuggest()
 	if(!isset($_SESSION['username']))
 	{
 		$_SESSION['error_admin'] = "Login to view admin page";
-		header('Location:../index.php');	
+		header('Location:../index.php');
 	}
-else{
-	$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
-	$sql="SELECT `id`,`bookname`,`author`,`publisher`,`edition`,`volume`,`review`,`date_posted` FROM `suggest` WHERE `flag`=1 ORDER BY `date_posted` DESC";
-	$result=mysqli_query($db,$sql);
-	$rowbooksfetched=array();
+	else{
+		$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
+		$sql="SELECT `id`,`bookname`,`author`,`publisher`,`edition`,`volume`,`review`,`date_posted` FROM `suggest` WHERE `flag`=1 ORDER BY `date_posted` DESC";
+		$result=mysqli_query($db,$sql);
+		$rowbooksfetched=array();
 
-	while($rows = mysqli_fetch_array($result))  
-	{  
-	  $rowbooksfetched[] = $rows;
-	  
+		while($rows = mysqli_fetch_array($result))
+		{
+			$rowbooksfetched[] = $rows;
+
+		}
+		mysqli_close($db);
+		return $rowbooksfetched;
 	}
-	mysqli_close($db);
-	return $rowbooksfetched;
-}
 }
 function display_queries()
 {
@@ -428,21 +428,21 @@ function display_queries()
 	if(!isset($_SESSION['username']))
 	{
 		$_SESSION['error_admin'] = "Login to view admin page";
-		header('Location:../index.php');	
+		header('Location:../index.php');
 	}
 	else{
-	$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
-	$sql="SELECT `id`,`name`,`email`,`college`,`rollno`,`course`,`branch`,`message`,`date_posted` FROM `query` WHERE `flag`=1 ORDER BY `date_posted` DESC";
-	$result=mysqli_query($db,$sql);
-	$rowqueryfetched=array();
+		$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
+		$sql="SELECT `id`,`name`,`email`,`college`,`rollno`,`course`,`branch`,`message`,`date_posted` FROM `query` WHERE `flag`=1 ORDER BY `date_posted` DESC";
+		$result=mysqli_query($db,$sql);
+		$rowqueryfetched=array();
 
-	while($rows = mysqli_fetch_array($result))  
-	{  
-	  $rowqueryfetched[] = $rows;
+		while($rows = mysqli_fetch_array($result))
+		{
+			$rowqueryfetched[] = $rows;
+		}
+		mysqli_close($db);
+		return $rowqueryfetched;
 	}
-	mysqli_close($db);
-	return $rowqueryfetched;
-}
 }
 //function delete_* is called when delete hyperlink is clicked
 //only admin has right to delete any post
@@ -454,13 +454,13 @@ function delete_notices($id)//pass the corresponding id to be deleted here
 	if(!isset($_SESSION['username']))
 	{
 		$_SESSION['error_admin'] = "Login to proceed further";
-		header('Location:../index.php');	
+		header('Location:../index.php');
 	}
-else{
-	$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
+	else{
+		$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
 
-	$sql="DELETE FROM `notices` WHERE `id`='$id'";
-	$res=mysqli_query($db,$sql);
+		$sql="DELETE FROM `notices` WHERE `id`='$id'";
+		$res=mysqli_query($db,$sql);
 		if(!$res)
 		{
 			die("error".mysqli_error($db));
@@ -468,24 +468,24 @@ else{
 		mysqli_close($db);
 		$_SESSION['admin_info']="This Notice has been Deleted";
 		header('Location: ');
-}
+	}
 }
 function delete_news($id)
 {
 	session_start();
-	
+
 	if(!isset($_SESSION['username']))
 	{
 		$_SESSION['error_admin'] = "Login to view proceed further";
-		header('Location:');	
+		header('Location:');
 	}
-else{	$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
+	else{	$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
 	$sql="DELETE FROM `news` WHERE `id`='$id'";
 	$res=mysqli_query($db,$sql);
-		if(!$res)
-		{
-			die("error".mysqli_error($db));
-		}
+	if(!$res)
+	{
+		die("error".mysqli_error($db));
+	}
 	mysqli_close($db);
 	$_SESSION['admin_info']="This News has been Deleted";
 	header('Location: ');
@@ -498,20 +498,20 @@ function delete_arrivals($id)
 	if(!isset($_SESSION['username']))
 	{
 		$_SESSION['error_admin'] = "Login to view proceed further";
-		header('Location:');	
+		header('Location:');
 	}
 	else{
-	$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
-	$sql="DELETE FROM `arrivals` WHERE `id`='$id'";
-	$res=mysqli_query($db,$sql);
+		$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
+		$sql="DELETE FROM `arrivals` WHERE `id`='$id'";
+		$res=mysqli_query($db,$sql);
 		if(!$res)
 		{
 			die("error".mysqli_error($db));
 		}
-	mysqli_close($db);
-	$_SESSION['admin_info']="This Arrival has been Deleted";
-	header('Location: ');
-}
+		mysqli_close($db);
+		$_SESSION['admin_info']="This Arrival has been Deleted";
+		header('Location: ');
+	}
 }
 function delete_query($id)
 {
@@ -519,20 +519,20 @@ function delete_query($id)
 	if(!isset($_SESSION['username']))
 	{
 		$_SESSION['error_admin'] = "Login to view proceed further";
-		header('Location:../../index.php');	
+		header('Location:../../index.php');
 	}
 	else{
-	$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
-	$sql="DELETE FROM `query` WHERE `id`='$id'";
-	$res=mysqli_query($db,$sql);
+		$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
+		$sql="DELETE FROM `query` WHERE `id`='$id'";
+		$res=mysqli_query($db,$sql);
 		if(!$res)
 		{
 			die("error".mysqli_error($db));
 		}
-	mysqli_close($db);
-	$_SESSION['admin_info']="This Query has been Deleted";
-	header('Location: ');
-}
+		mysqli_close($db);
+		$_SESSION['admin_info']="This Query has been Deleted";
+		header('Location: ');
+	}
 }
 
 function delete_booksugest($id)
@@ -541,19 +541,23 @@ function delete_booksugest($id)
 	if(!isset($_SESSION['username']))
 	{
 		$_SESSION['error_admin'] = "Login to view proceed further";
-		header('Location:');	
+		header('Location:');
 	}
 	else{
-	$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
-	$sql="DELETE FROM `suggest` WHERE `id`='$id'";
-	$res=mysqli_query($db,$sql);
+		$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
+		$sql="DELETE FROM `suggest` WHERE `id`='$id'";
+		$res=mysqli_query($db,$sql);
 		if(!$res)
 		{
 			die("error".mysqli_error($db));
 		}
-	mysqli_close($db);
-	$_SESSION['admin_info']="This Suggestion has been Deleted";
-	header('Location: ');
+		mysqli_close($db);
+		$_SESSION['admin_info']="This Suggestion has been Deleted";
+		header('Location: ');
+	}
 }
+
+function close_conn($x){
+	mysqli_close($x);
 }
 ?>

@@ -44,10 +44,17 @@ if(isset($_FILES['image'])){
 
   $stmt = $db->prepare("INSERT INTO `papers`(`file_name`,`course`,`semester`,`year`,`branch`,`subject`) VALUES (?,?,?,?,?,?)");
 
-  if($stmt == false){
+  $stmt2 = $db->prepare("SELECT `id` FROM `branch_name` WHERE `branch` = ? ");
+
+  if($stmt == false || $stmt2 == false){
     echo 'There is some problem in connecting to the db';
     die();
   }
+
+  $stmt2->bind_param('s', $branch);
+  
+  $br = $stmt2->execute();
+  $branch = $stmt2->get_result()->fetch_array()['id'];
 
   $stmt->bind_param('ssssss', $file_name,$course,$semester,$year,$branch,$subject);
   $res=$stmt->execute();  

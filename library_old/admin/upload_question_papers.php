@@ -173,6 +173,7 @@
                               <?php
                               echo "<br>";
                             }
+                            close_conn($db);
                             ?>
 
                           </select><br>
