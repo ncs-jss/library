@@ -28,7 +28,40 @@ $s="";
   <link rel="stylesheet" href="../assets/css/bootstrap.css">
   <link rel="stylesheet" href="../assets/css/main.css">
   <script src="../assets/js/vendor/jquery-1.11.1.min.js"></script>
+  <style media="screen">
+  .paginate_button{
+    margin-right: .5em !important;
+  }
 
+  a{
+    margin-right: .5em !important;
+  }
+
+  .disabled{
+    color: #454545;
+  }
+
+  .dataTables_filter, .dataTables_info
+  {
+    display: none;
+  }
+
+  .table-row th:nth-child(1){
+    width: 10%;
+  }
+  .table-row th:nth-child(2){
+    width: 25%;
+  }
+  .table-row th:nth-child(3){
+    width: 10%;
+  }
+  .table-row th:nth-child(4){
+    width: 45%;
+  }
+  .table-row th:nth-child(5){
+    width: 10%;
+  }
+  </style>
   <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
 </head>
 <body>
@@ -118,11 +151,38 @@ $s="";
 
           <script type="text/javascript">
           $(document).ready(function(){
-            console.log($('#data'));
+            //console.log($('#data'));
             $('#data').DataTable({
+              "pageLength": 10,
               "bLengthChange": false,
-              "pageLength":1,
-              "bFilter": false
+              "aoColumnDefs": [
+                { 'bSortable': false, 'aTargets': [0, 1, 2, 3, 4] }
+              ],
+              initComplete: function () {
+                var i = -1;
+                this.api().columns().every( function () {
+                  var column = this;
+                  i++;
+                  if(! (i < 3))
+                  return;
+                  var select = $('<select><option value="">'
+                  +'All</option></select>')
+                  .appendTo( $(column.header()).empty() )
+                  .on( 'change', function () {
+                    var val = $.fn.dataTable.util.escapeRegex(
+                      $(this).val()
+                    );
+
+                    column
+                    .search( val ? '^'+val+'$' : '', true, false )
+                    .draw();
+                  } );
+
+                  column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                  } );
+                } );
+              }
             });
           });
           </script>
@@ -138,12 +198,18 @@ $s="";
             id="data">
             <thead>
               <tr>
-                <th>#</th>
-                <th>Name</th>
                 <th>Course</th>
-                <th>Semester</th>
                 <th>Branch</th>
+                <th>Semester</th>
+                <th>Name</th>
                 <th>Download</th>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
               </tr>
             </thead>
             <tbody>
@@ -152,11 +218,10 @@ $s="";
               while ($a = mysqli_fetch_array($papers)) {
                 ?>
                 <tr>
-                  <td><?php echo $i++ ?></td>
-                  <td><?php echo $a['file_name'] ?></td>
-                  <td><?php echo $a['course'] ?></td>
-                  <td><?php echo $a['semester'] ?></td>
+                  <td><?php echo get_course($a['course']) ?></td>
                   <td><?php echo $a['branch'] ?></td>
+                  <td><?php echo $a['semester'] ?></td>
+                  <td><?php echo $a['file_name'] ?></td>
                   <td>
                     <a href="images/<?php echo $a['file_name'] ?>">Download</a>
                   </td>
@@ -212,9 +277,6 @@ $s="";
       </div>
 
       <div class="col-sm-1"></div>
-
-
-
 
     </div>
 
