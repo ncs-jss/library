@@ -18,3 +18,10 @@ function get_course($course_id){
 		default: return '-';
 	}
 }
+
+function get_branch($course_id, $branch){
+	if($course_id > 1){
+		return '-';
+	}
+	return $branch;
+}

@@ -219,7 +219,7 @@ $s="";
                 ?>
                 <tr>
                   <td><?php echo get_course($a['course']) ?></td>
-                  <td><?php echo $a['branch'] ?></td>
+                  <td><?php echo get_branch($a['course'], $a['branch']) ?></td>
                   <td><?php echo $a['semester'] ?></td>
                   <td><?php echo $a['file_name'] ?></td>
                   <td>
