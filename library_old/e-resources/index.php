@@ -1,11 +1,19 @@
 <?php
+include('../library.php');
+$rowarrivalsfetched=array();
+$rowarrivalsfetched=display_links();
+$count=sizeof($rowarrivalsfetched);
+$i=0;
+$s="";
+
 $flag=0;
-session_start();
 if(isset($_SESSION['username']))
 {
-    $flag=1;
+  $flag=1;
 }
+
 ?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -71,6 +79,9 @@ if(isset($_SESSION['username']))
                                         <li><a href="../contact/index.php">Contact Us</a></li>
                                         <li><a href="../external-links/index.php">External Links</a></li>
                                         <?php if($flag==1)
+                                        {
+
+                                        }
         echo "<li><a href='../admin/index.php'>Dash Board</a></li>";
      ?>
                                     </ul>
@@ -111,13 +122,29 @@ if(isset($_SESSION['username']))
                             <h3>IEEE ALL-society Periodicals Package (ASPP)</h3>
                             <p>It provides access to the IEEE core collection of, electronics, and computer science engineering. Over 145 IEEE online society-sponsored journals, transactions and magazines are included in this package with back file access to 2000. These are most highly cited journals in the field concentrating on theoretical and experimental papers, practical applications in research, design and specification.</p>
                             <a href="https://www.ieee.org/">IEEE Home</a>
+                            <?php
+                            if($flag==1)
+                                   {
+                                    echo "<button class='btn btn-primary fa fa-pencil'></button>";
+                                    echo "<button class='btn btn-primary fa fa-trash'></button>";
+
+                                     
+                                   }
+                                   ?>
                             
                             
                                 <h3>ASCE</h3>
                                 <p>The American Society of Civil Engineers (ASCE) is recognized globally for their significant contribution and dedication to the advancement of science and education in the civil engineering profession. The ASCE publishes 33 journals, periodicals and transactions that cover a comprehensive range of the civil engineering profession. ASCE journals are highly cited and are most relevant to the civil engineers for exchanging technical and professional knowledge. Information published in the journals of ASCE forms archival records not only of the technical advances of the ASCE but of the civil engineering profession as a whole.</p>
                             <a href="http://www.asce.org/">ASCE Home</a>
-                            
-                            
+                            <?php
+                            if($flag==1)
+                                   {
+                                    echo "<button class='btn btn-primary fa fa-pencil'></button>";
+                                    echo "<button class='btn btn-primary fa fa-trash'></button>";
+
+                                     
+                                   }
+                            ?>
                             </div>
                             
                             
@@ -125,16 +152,31 @@ if(isset($_SESSION['username']))
                             
                                 <h4>Online Video Lectures</h4>
                                 <ul>
+
+
+                            <?php
+                            $i=2;
+                        while($i<$count) {
+                            ?>
+
+                                        <li><a href="<?php echo $rowarrivalsfetched[$i]['url']; ?>"><?php echo $rowarrivalsfetched[$i]['name']; ?></a><p><?php echo $rowarrivalsfetched[$i]['url']; ?></p></li> 
+                                   <?php
+                                   if($flag==1)
+                                   {
+                                    echo "<button class='btn btn-primary fa fa-pencil'></button>";
+                                    echo "<button class='btn btn-primary fa fa-trash'></button>";
+
+
+                                   }
+                                   $i=$i+1;
+                               }
+                                ?>
+
+
                                     
-                                    <li><a href="http://nptel.iitm.ac.in/">NPTEL Video lectures</a><p>(http://nptel.iitm.ac.in/)</p></li>
-                                    <li><a href="http://www.youtube.com/user/nptelhrd?gl=IN&hl=en-GB">You Tube videos lectures on Engineering &amp Technology</a><p>(http://www.youtube.com/user/nptelhrd?gl=IN&hl=en-GB)
-                                        </p></li>
-                                    <li><a href="http://www.academicearth.org/subjects/">Academic Earth</a><p>(http://www.academicearth.org/subjects/)</p></li>
-                                    <li><a href="http://www.comsoc.org/free-tutorials">IEEE Communications Society Conference tutorials (Free)</a><p>(http://www.comsoc.org/free-tutorials)</p></li>
-                                    
-                                </ul>
+                             
                                 
-                                <h4>Digital Resources</h4>
+                                <!-- <h4>Digital Resources</h4>
                                 <ul>
                                     
                                     <li><a href="http://nptel.iitm.ac.in/">NPTEL Video lectures</a><p>(http://nptel.iitm.ac.in/)</p></li>
@@ -143,23 +185,18 @@ if(isset($_SESSION['username']))
                                     <li><a href="http://www.academicearth.org/subjects/">Academic Earth</a><p>(http://www.academicearth.org/subjects/)</p></li>
                                     <li><a href="http://www.comsoc.org/free-tutorials">IEEE Communications Society Conference tutorials (Free)</a><p>(http://www.comsoc.org/free-tutorials)</p></li>
                                     
-                                </ul>
-                                
-                                <h4>Digital Resources</h4>
-                                <ul>
-                                    
-                                    <li><a href="">E-book Collection</a></li>
-                                    
-                                    
-                                    
-                                </ul>
+                                </ul> -->
+                              
                             
                             </div>                            
                             
                             
                         </div>
+
+                                 
                         
                     </div>
+
                     
                     <div class="col-sm-2 col-xs-3">
                     
