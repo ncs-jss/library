@@ -424,12 +424,8 @@ function display_booksuggest()
 function display_links()
 {
 	session_start();
-	if(!isset($_SESSION['username']))
-	{
-		$_SESSION['error_admin'] = "Login to view admin page";
-		header('Location:../index.php');
-	}
-	else{
+	
+	
 		$db=mysqli_connect("127.0.0.1","root","","library_db")or die("Error Connecting to Database") ;
 		$sql="SELECT `id`,`name`,`url` FROM `links`";
 		$result=mysqli_query($db,$sql);
@@ -442,7 +438,7 @@ function display_links()
 		}
 		mysqli_close($db);
 		return $rowbooksfetched;
-	}
+	
 }
 function display_queries()
 {
