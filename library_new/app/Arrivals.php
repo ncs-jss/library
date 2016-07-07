@@ -12,4 +12,5 @@ class Arrivals extends Model
     protected $hidden = [
         'created_at','updated_at','remember_token'
     ];
+    protected $table = 'new_arrivals';
 }

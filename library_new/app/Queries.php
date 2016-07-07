@@ -12,4 +12,5 @@ class Queries extends Model
     protected $hidden = [
         'created_at','updated_at','remember_token'
     ];
+    protected $table = 'queries';
 }

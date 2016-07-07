@@ -54,25 +54,25 @@
                             <div class="row">
                                 <div class="col-xs-6 col-sm-3 service-item">
                                     <a href="#">
-                                        <img class="img-responsive" src="{{ URL::asset('include/img/serv_1.jpg') }}" alt="">
+                                        <img class="img-responsive" src="{{ URL::asset('img/serv_1.jpg') }}" alt="">
                                         <span class="service-text" id="serv_1">Book Borrowing Facility</span>
                                     </a>
                                 </div>
                                 <div class="col-xs-6 col-sm-3 service-item">
                                     <a href="#">
-                                        <img class="img-responsive" src="{{ URL::asset('include/img/serv_2.jpg') }}" alt="">
+                                        <img class="img-responsive" src="{{ URL::asset('img/serv_2.jpg') }}" alt="">
                                         <span class="service-text" id="serv_2">Reference Service</span>
                                     </a>
                                 </div>
                                 <div class="col-xs-6 col-sm-3 service-item">
                                     <a href="#">
-                                        <img class="img-responsive" src="{{ URL::asset('include/img/serv_3.jpg') }}" alt="">}}
+                                        <img class="img-responsive" src="{{ URL::asset('img/serv_3.jpg') }}" alt="">}}
                                         <span class="service-text" id="serv_3">Inter Library Loan</span>
                                     </a>
                                 </div>
                                 <div class="col-xs-6 col-sm-3 service-item">
                                     <a href="#">
-                                        <img class="img-responsive" src="{{ URL::asset('include/img/serv_4.jpg') }}" alt="">
+                                        <img class="img-responsive" src="{{ URL::asset('img/serv_4.jpg') }}" alt="">
                                         <span class="service-text" id="serv_4">News Paper Clipping</span>
                                     </a>
                                 </div>
@@ -81,25 +81,25 @@
                             <div class="row">
                                 <div class="col-xs-6 col-sm-3 service-item">
                                     <a href="#">
-                                        <img class="img-responsive" src="{{ URL::asset('include/img/serv_5.jpg') }}" alt="">
+                                        <img class="img-responsive" src="{{ URL::asset('img/serv_5.jpg') }}" alt="">
                                         <span class="service-text" id="serv_5">Internet Access Facility</span>
                                     </a>
                                 </div>
                                 <div class="col-xs-6 col-sm-3 service-item">
                                     <a href="#">
-                                        <img class="img-responsive" src="{{ URL::asset('include/img/serv_6.jpg') }}" alt="">
+                                        <img class="img-responsive" src="{{ URL::asset('img/serv_6.jpg') }}" alt="">
                                         <span class="service-text" id="serv_6">User orientation</span>
                                     </a>
                                 </div>
                                 <div class="col-xs-6 col-sm-3 service-item">
                                     <a href="#">
-                                        <img class="img-responsive" src="{{ URL::asset('include/img/serv_7.jpg') }}" alt="">
+                                        <img class="img-responsive" src="{{ URL::asset('img/serv_7.jpg') }}" alt="">
                                         <span class="service-text" id="serv_7">Reprography Service</span>
                                     </a>
                                 </div>
                                 <div class="col-xs-6 col-sm-3 service-item">
                                     <a href="#">
-                                        <img class="img-responsive" src="{{ URL::asset('include/img/serv_8.jpg') }}" alt="">
+                                        <img class="img-responsive" src="{{ URL::asset('img/serv_8.jpg') }}" alt="">
                                         <span class="service-text" id="serv_8">Book Bank Facility</span>
                                     </a>
                                 </div>
@@ -108,25 +108,25 @@
                             <div class="row">
                                 <div class="col-xs-6 col-sm-3 service-item">
                                     <a href="#">
-                                        <img class="img-responsive" src="{{ URL::asset('include/img/serv_9.jpg') }}" alt="">
+                                        <img class="img-responsive" src="{{ URL::asset('img/serv_9.jpg') }}" alt="">
                                         <span class="service-text" id="serv_9">Database Orientation</span>
                                     </a>
                                 </div>
                                 <div class="col-xs-6 col-sm-3 service-item">
                                     <a href="#">
-                                        <img class="img-responsive" src="{{ URL::asset('include/img/serv_10.jpg') }}" alt="">
+                                        <img class="img-responsive" src="{{ URL::asset('img/serv_10.jpg') }}" alt="">
                                         <span class="service-text" id="serv_10">Government Book Bank Scheme Facility</span>
                                     </a>
                                 </div>
                                 <div class="col-xs-6 col-sm-3 service-item">
                                     <a href="#">
-                                        <img class="img-responsive" src="{{ URL::asset('include/img/serv_11.jpg') }}" alt="">
+                                        <img class="img-responsive" src="{{ URL::asset('img/serv_11.jpg') }}" alt="">
                                         <span class="service-text" id="serv_11">Online Public Access Catalogue</span>
                                     </a>
                                 </div>
                                 <div class="col-xs-6 col-sm-3 service-item">
                                     <a href="#">
-                                        <img class="img-responsive" src="{{ URL::asset('include/img/serv_12.jpg') }}" alt="">
+                                        <img class="img-responsive" src="{{ URL::asset('img/serv_12.jpg') }}" alt="">
                                         <span class="service-text" id="serv_12">Online Purchase Suggestions</span>
                                     </a>
                                 </div>
