@@ -1,0 +1,25 @@
+.service-item {
+  margin-bottom: 20px;
+}
+
+.service-text {
+    background: rgb(41, 41, 41);
+    color: rgba(255, 255, 255, 0.74);
+    display: block;
+    height: 75px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+#serv_1  { background: #aa5957; }
+#serv_2  { background: #1a3239; }
+#serv_3  { background: #4c362e; }
+#serv_4  { background:         ; }
+#serv_5  { background: #13889d; }
+#serv_6  { background: #64032a; }
+#serv_7  { background: #c57769; }
+#serv_8  { background: #dfc743; }
+#serv_9  { background:        ; }
+#serv_10 { background: rgb(120, 170, 206); }
+#serv_11 { background: #b88846; }
+#serv_12 { background: #e6cbd2; }

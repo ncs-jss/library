@@ -1,0 +1,66 @@
+.sidebar-label button {
+  display: none;
+}
+
+.sidebar-label {
+  margin-bottom: 0px;
+  display: block;
+}
+
+.custom-collapse div .icon-bar{
+  background-color: #ff9900;
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+    margin-top: 5px;
+}
+
+/*Collapsible Sidebar*/
+
+@media screen and (min-width: 768px) {
+  /* Show side nav li items when on desktops */
+  .custom-collapse .collapse{
+        display:block !important;
+        visibility: visible !important;
+  }
+}
+
+/* Mobile View of Sidebar */
+@media screen and (max-width: 768px) {
+
+  .navbar {
+    margin-bottom:0;
+  }
+  .navbar-brand {
+    height: auto;
+    padding-bottom: 0;
+  }
+
+  .custom-collapse {
+    width: 90%;
+    position: relative;
+    left: 10%;
+  }
+  .sidebar h1 {
+       text-align: left;
+       padding-left: 2.3em;
+  }
+
+  .sidebar-label h1 span i {
+      font-size: 15px;
+      padding-left: 5px;
+      float: right;
+      padding-right: 90px;
+  }
+
+  .sidebar ul {
+    text-align: left;
+  }
+
+  hr.orange {
+    margin-left: 2em;
+    margin-right: 6em;
+  }
+
+}
