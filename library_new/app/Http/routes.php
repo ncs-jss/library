@@ -11,15 +11,22 @@
 |
 */
 
-Route::get('/', function() { return view('welcome');});
-Route::get('/login', ['as'=>'lib_login', 'uses'=>'UserController@login']);
-Route::get('/a', function () {return view('admin-login');});
-Route::get('/b', function () {return view('index');});
-Route::get('/c', function () {return view('new-arrivals');});
-Route::get('/d', function () {return view('query');});
-Route::get('/e', function () {return view('services');});
-Route::get('/f', function () {return view('suggest');});
-Route::get('/g', function () {return view('contact');});
-Route::get('/h', function () {return view('e-resources');});
-Route::get('/i', function () {return view('external-links');});
-Route::get('/j', function () {return view('notices');});
+Route::get('/', 'PagesController@getIndex');
+
+Route::get('login', 'PagesController@getLogin');
+
+Route::get('new_arrivals', 'PagesController@getArrivals');
+
+Route::get('notices', 'PagesController@getNotices');
+
+Route::get('suggest', 'PagesController@getSuggest');
+
+Route::get('services', 'PagesController@getServices');
+
+Route::get('query', 'PagesController@getQuery');
+
+Route::get('contact', 'PagesController@getContact');
+
+Route::get('resources', 'PagesController@getResources');
+
+Route::get('external_links', 'PagesController@getExternalLinks');
