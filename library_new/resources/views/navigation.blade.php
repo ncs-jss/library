@@ -22,12 +22,12 @@
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                                     <ul class="nav navbar-nav navbar-right">
-                                        <li><a href="#">Home</a></li>
-                                        <li><a href="camps">E-Resources</a></li>
-                                        <li><a href="about">Notices</a></li>
+                                        <li><a href="{{route('\')}}">Home</a></li>
+                                        <li><a href="{{route('resources')}}">E-Resources</a></li>
+                                        <li><a href="{{route('notices')}}">Notices</a></li>
 
-                                        <li><a href="testimonials">Contact Us</a></li>
-                                        <li><a href="register">External Links</a></li>
+                                        <li><a href="{{route('contact')}}">Contact Us</a></li>
+                                        <li><a href="{{route('external_links')}}">External Links</a></li>
                                     </ul>
 
                                 </div><!-- /.navbar-collapse -->

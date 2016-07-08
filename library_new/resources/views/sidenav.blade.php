@@ -15,11 +15,11 @@
 
                             <ul class="list-group collapse" id="side-menu-collapse-1" >
 
-                                <li class="list-group-item dropdown-toggle active-list"><a href="#">Services</a></li>
-                                <li class="list-group-item dropdown-toggle"><a href="#">New Arrival</a></li>
-                                <li class="list-group-item dropdown-toggle"><a href="#">Admin Login</a></li>
-                                <li class="list-group-item dropdown-toggle"><a href="#">Services</a></li>
-                                <li class="list-group-item dropdown-toggle"><a href="#">Library OPAC</a></li>
+                                <li class="list-group-item dropdown-toggle active-list"><a href="{{route('services')}}">Services</a></li>
+                                <li class="list-group-item dropdown-toggle"><a href="{{route('new_arrivals')}}">New Arrival</a></li>
+                                <li class="list-group-item dropdown-toggle"><a href="{{route('login')}}}">Admin Login</a></li>
+                                <li class="list-group-item dropdown-toggle"><a href="{{route('services')}}">Services</a></li>
+                                <li class="list-group-item dropdown-toggle"><a href="{{route('/')}}">Library OPAC</a></li>
 
                             </ul>
                           </div>
@@ -38,8 +38,8 @@
                             <hr class="orange">
                             <ul class="list-group collapse" id="side-menu-collapse-2">
 
-                                <li class="list-group-item dropdown-toggle" ><a href="#">Submit Query</a></li>
-                                <li class="list-group-item dropdown-toggle" ><a href="#">Suggest Books</a></li>
+                                <li class="list-group-item dropdown-toggle" ><a href="{{route('query')}}">Submit Query</a></li>
+                                <li class="list-group-item dropdown-toggle" ><a href="{{route('suggest')}}">Suggest Books</a></li>
 
                             </ul>
                           </div>
@@ -57,8 +57,8 @@
                             <hr class="orange">
                             <ul class="list-group collapse" id="side-menu-collapse-3">
 
-                                <li class="list-group-item dropdown-toggle" ><a href="#">Staff</a></li>
-                                <li class="list-group-item dropdown-toggle" ><a href="#">Students</a></li>
+                                <li class="list-group-item dropdown-toggle" ><a href="{{route('/')}}">Staff</a></li>
+                                <li class="list-group-item dropdown-toggle" ><a href="{{route('/')}}">Students</a></li>
 
                             </ul>
                           </div>
