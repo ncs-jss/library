@@ -19,3 +19,7 @@ Route::get('/c', function () {return view('new-arrivals');});
 Route::get('/d', function () {return view('query');});
 Route::get('/e', function () {return view('services');});
 Route::get('/f', function () {return view('suggest');});
+Route::get('/g', function () {return view('contact');});
+Route::get('/h', function () {return view('e-resources');});
+Route::get('/i', function () {return view('external-links');});
+Route::get('/j', function () {return view('notices');});
