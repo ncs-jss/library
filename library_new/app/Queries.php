@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Queries extends Model
 {
     protected $fillable = [
-        'id','username','query','reply','subject'
+        'username','query','reply','subject'
     ];
     protected $hidden = [
-        'created_at','updated_at','remember_token'
+        'remember_token'
     ];
     protected $table = 'queries';
 }
