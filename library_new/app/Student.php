@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     protected $fillable = [
-        'id', 'name','username','email','phone_no','admission_year','course','branch'
+         'name','username','email','phone_no','admission_year','course','branch'
     ];
     protected $hidden = [
-        'created_at','updated_at','remember_token'
+        'remember_token'
     ];
     protected $table = 'student_details';
 }
