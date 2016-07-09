@@ -30,3 +30,5 @@ Route::get('contact', ['as'=>'contact','uses'=>'PagesController@getContact']);
 Route::get('e-resources', ['as'=>'resources','uses'=>'PagesController@getResources']);
 
 Route::get('external-links', ['as'=>'external_links','uses'=>'PagesController@getExternalLinks']);
+
+Route::post('/login_user',['as'=>'login', 'before'=>'csrf', 'uses'=>'UserController@postLogin']);
