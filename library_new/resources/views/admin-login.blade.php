@@ -50,16 +50,23 @@
                             <div class="col-sm-3"></div>
                             <div class="col-sm-6">
                                 <h2>Login</h2>
-                                <form>
+                                <form action="login_user" method="POST"> 
                                     <div class="form-group">
                                         <label class="sr-only">Username:</label>
-                                        <input type="text" class="form-control" id="" placeholder="Username *" required>
+                                        <input type="text" class="form-control" id="" name="username" placeholder="Username *" required>
                                     </div>
                                     <div class="form-group">
                                         <label class=" sr-only">Password:</label>
-                                        <input type="password" class="form-control" id="" placeholder="Password *" required>
+                                        <input type="password" class="form-control" id="" name="password" placeholder="Password *" required>
                                     </div>
+                                    @if($errors->has())
+                                    @foreach ($errors->all() as $error)
+                                    <div>{{ $error }}</div>
+                                    @endforeach
+                                    @endif
                                     <button type="submit" class="btn btn-primary">Login</button>
+                                    
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 </form>
 
                             </div>
