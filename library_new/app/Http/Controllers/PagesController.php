@@ -47,4 +47,5 @@ class PagesController extends Controller
     public function getExternalLinks(){
     	return view('external-links');
     }
+
 }
