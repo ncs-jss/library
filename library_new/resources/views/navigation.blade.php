@@ -22,7 +22,7 @@
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                                     <ul class="nav navbar-nav navbar-right">
-                                        <li><a href="{{route('\')}}">Home</a></li>
+                                        <li><a href="{{route('home')}}">Home</a></li>
                                         <li><a href="{{route('resources')}}">E-Resources</a></li>
                                         <li><a href="{{route('notices')}}">Notices</a></li>
 
