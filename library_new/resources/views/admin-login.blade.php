@@ -59,6 +59,7 @@
                                         <label class=" sr-only">Password:</label>
                                         <input type="password" class="form-control" id="" name="password" placeholder="Password *" required>
                                     </div>
+                                    <div style="color:red">{{ $err }}</div>
                                     @if($errors->has())
                                     @foreach ($errors->all() as $error)
                                     <div>{{ $error }}</div>
