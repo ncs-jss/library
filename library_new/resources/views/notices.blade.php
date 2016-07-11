@@ -93,21 +93,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($notices as $notice)
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>acvd</td>
+                                        <th scope="row">{{ $id++ }}</th>
+                                        <td><a href="">{{ $notice->subject }}</a></td>
                                         <td>24/1/2015</td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>acvd</td>
-                                        <td>24/1/2015</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>acvd</td>
-                                        <td>24/1/2015</td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
 
