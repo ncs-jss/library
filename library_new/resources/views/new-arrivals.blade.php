@@ -90,24 +90,16 @@
                                         <th>#</th>
                                         <th>Title</th>
                                         <th>Date of arrival</th>
-                                    </tr>
+                                   </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach($arrivals as $arrival)
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>acvd</td>
+                                        <td scope="row">{{ $id++ }}</th>
+                                        <td><a href="">{{ $arrival->book_name}}</a></td>
                                         <td>24/1/2015</td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>acvd</td>
-                                        <td>24/1/2015</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>acvd</td>
-                                        <td>24/1/2015</td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
 
