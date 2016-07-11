@@ -15,7 +15,7 @@
 
                             <ul class="list-group collapse" id="side-menu-collapse-1" >
 
-                                <li class="list-group-item dropdown-toggle active-list"><a href="{{route('services')}}">Services</a></li>
+                                <li class="list-group-item dropdown-toggle"><a href="{{route('services')}}">Services</a></li>
                                 <li class="list-group-item dropdown-toggle"><a href="{{route('new_arrivals')}}">New Arrival</a></li>
                                 <li class="list-group-item dropdown-toggle"><a href="{{route('login')}}">Admin Login</a></li>
                                 <li class="list-group-item dropdown-toggle"><a href="{{route('services')}}">Services</a></li>
