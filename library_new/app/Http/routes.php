@@ -31,4 +31,14 @@ Route::get('e-resources', ['as'=>'resources','uses'=>'PagesController@getResourc
 
 Route::get('external-links', ['as'=>'external_links','uses'=>'PagesController@getExternalLinks']);
 
-Route::post('/login_user',['as'=>'login', 'before'=>'csrf', 'uses'=>'UserController@postLogin']);
+Route::get('notice', ['as'=>'notice','uses'=>'PagesController@getNotice']);
+
+Route::get('add_books', ['as'=>'add_books','uses'=>'PagesController@getAddBook']);
+
+// POST routes
+
+Route::post('login_user',['as'=>'login_user', 'before'=>'csrf', 'uses'=>'UserController@postLogin']);
+
+Route::post('submit_query',['as'=>'submit_query', 'before'=>'csrf', 'uses'=>'UserController@postQuery']);
+
+Route::post('add_book',['as'=>'add_book', 'before'=>'csrf', 'uses'=>'UserController@postAddBook']);
