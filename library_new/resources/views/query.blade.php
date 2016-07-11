@@ -49,20 +49,24 @@
 
                             <div class="col-sm-8 form-query">
                                 <h2>Submit a Query</h2>
-                                <form>
-                                    <div class="form-group">
+                                <form action="submit_query" method="POST">
+                                    <!-- <div class="form-group">
                                         <label class="sr-only">Name:</label>
                                         <input type="text" class="form-control" id="" placeholder="Name *" required>
                                     </div>
                                     <div class="form-group">
                                         <label class=" sr-only">Email:</label>
                                         <input type="email" class="form-control" id="" placeholder="Email *" required>
+                                    </div> -->
+                                    <div class="form-group">
+                                        <label class=" sr-only">Username:</label>
+                                        <input type="text" class="form-control" id="" name="username" placeholder="Username (example- 14cse021) *" required>
                                     </div>
                                     <div class="form-group">
-                                        <label class=" sr-only">Roll No.</label>
-                                        <input type="text" class="form-control" id="" placeholder="Roll no. (example- 1209110013) *" required>
+                                        <label class=" sr-only">Subject:</label>
+                                        <input type="text" class="form-control" id="" name="subject" placeholder="Subject *" required>
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label class="">College</label>
                                         <label class="checkbox-inline">
                                             <input type="radio" name="college" value="JSS" checked> JSSATE, Noida
@@ -100,13 +104,21 @@
 
                                         </select>
 
-                                    </div>
+                                    </div> -->
 
                                     <div class="form-group">
                                         <label class=" sr-only">Message</label>
-                                        <textarea placeholder="Message" rows="3" ></textarea>
+                                        <textarea placeholder="Message" name="query" rows="3" ></textarea>
                                     </div>
+                                    <div style="color:green">{{ $err }}</div>
+                                    @if($errors->has())
+                                    @foreach ($errors->all() as $error)
+                                    <div>{{ $error }}</div>
+                                    @endforeach
+                                    @endif
                                     <button type="submit" class="btn btn-primary">Submit</button>
+
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 </form>
 
                             </div>
