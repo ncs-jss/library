@@ -14,7 +14,7 @@ class CreateQueriesTable extends Migration
     {
         /Schema::create('queries', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('username')->length(25)->unique();
+            $table->string('username')->length(25);
             $table->string('query')->length(10000);
             $table->string('reply')->length(10000);
             $table->string('subject')->length(200);
