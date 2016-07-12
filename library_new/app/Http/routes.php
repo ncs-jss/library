@@ -35,6 +35,8 @@ Route::get('notice', ['as'=>'notice','uses'=>'PagesController@getNotice']);
 
 Route::get('add_books', ['as'=>'add_books','uses'=>'PagesController@getAddBook']);
 
+Route::get('add_notices', ['as'=>'add_notices','uses'=>'PagesController@getAddNotice']);
+
 // POST routes
 
 Route::post('login_user',['as'=>'login_user', 'before'=>'csrf', 'uses'=>'UserController@postLogin']);
@@ -42,3 +44,5 @@ Route::post('login_user',['as'=>'login_user', 'before'=>'csrf', 'uses'=>'UserCon
 Route::post('submit_query',['as'=>'submit_query', 'before'=>'csrf', 'uses'=>'UserController@postQuery']);
 
 Route::post('add_book',['as'=>'add_book', 'before'=>'csrf', 'uses'=>'UserController@postAddBook']);
+
+Route::post('add_notice',['as'=>'add_notice', 'before'=>'csrf', 'uses'=>'UserController@postAddNotice']);
