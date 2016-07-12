@@ -57,4 +57,8 @@ class PagesController extends Controller
          return view('add_book')->with('err',"");
      }
 
+     public function getAddNotice(){
+         return view('add_notice')->with('err',"");
+     }
+
 }
