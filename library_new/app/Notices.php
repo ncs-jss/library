@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Notices extends Model
 {
     protected $fillable = [
-         'notices','subject'
+         'notice','subject'
     ];
     protected $hidden = [
         'updated_at','remember_token'
