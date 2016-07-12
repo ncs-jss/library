@@ -38,8 +38,8 @@
                             <hr class="orange">
                             <ul class="list-group collapse" id="side-menu-collapse-2">
 
-                                <li class="list-group-item dropdown-toggle" ><a href="{{route('null')}}">Submit Query</a></li>
-                                <li class="list-group-item dropdown-toggle" ><a href="{{route('null')}}">Suggest Books</a></li>
+                                <li class="list-group-item dropdown-toggle" ><a href="{{route('query')}}">Submit Query</a></li>
+                                <li class="list-group-item dropdown-toggle" ><a href="{{route('suggest')}}">Suggest Books</a></li>
 
                             </ul>
                           </div>
@@ -57,8 +57,8 @@
                             <hr class="orange">
                             <ul class="list-group collapse" id="side-menu-collapse-3">
 
-                                <li class="list-group-item dropdown-toggle" ><a href="{{route('home')}}">Staff</a></li>
-                                <li class="list-group-item dropdown-toggle" ><a href="{{route('home')}}">Students</a></li>
+                                <li class="list-group-item dropdown-toggle" ><a href="{{route('null')}}">Staff</a></li>
+                                <li class="list-group-item dropdown-toggle" ><a href="{{route('null')}}">Students</a></li>
 
                             </ul>
                           </div>
