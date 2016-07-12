@@ -87,7 +87,7 @@
                             <table class="table table-striped table-row ">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
+                                        <th>#</th>    
                                         <th>Queries</th>
                                         <th>Submitted By</th>
                                     </tr>
@@ -97,7 +97,7 @@
                                     <tr>
                                         <th scope="row">{{ $id++ }}</th>
                                         <td><a href="">{{ $query->subject }}</a></td>
-                                        <td>24/1/2015</td>
+                                        <td>{{ $query->username }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
