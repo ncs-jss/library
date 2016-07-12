@@ -19,7 +19,7 @@
                                 <li class="list-group-item dropdown-toggle"><a href="{{route('new_arrivals')}}">New Arrival</a></li>
                                 <li class="list-group-item dropdown-toggle"><a href="{{route('login')}}">Admin Login</a></li>
                                 <li class="list-group-item dropdown-toggle"><a href="{{route('services')}}">Services</a></li>
-                                <li class="list-group-item dropdown-toggle"><a href="{{route('home')}}">Library OPAC</a></li>
+                                <li class="list-group-item dropdown-toggle"><a href="{{route('null')}}">Library OPAC</a></li>
 
                             </ul>
                           </div>
@@ -38,8 +38,8 @@
                             <hr class="orange">
                             <ul class="list-group collapse" id="side-menu-collapse-2">
 
-                                <li class="list-group-item dropdown-toggle" ><a href="{{route('query')}}">Submit Query</a></li>
-                                <li class="list-group-item dropdown-toggle" ><a href="{{route('suggest')}}">Suggest Books</a></li>
+                                <li class="list-group-item dropdown-toggle" ><a href="{{route('null')}}">Submit Query</a></li>
+                                <li class="list-group-item dropdown-toggle" ><a href="{{route('null')}}">Suggest Books</a></li>
 
                             </ul>
                           </div>
