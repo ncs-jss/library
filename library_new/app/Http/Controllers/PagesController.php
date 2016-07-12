@@ -61,4 +61,8 @@ class PagesController extends Controller
          return view('add_notice')->with('err',"");
      }
 
+     public function getNotFound(){
+        return view('errors.404');
+     }
+
 }
