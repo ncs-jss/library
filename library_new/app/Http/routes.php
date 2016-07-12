@@ -37,6 +37,8 @@ Route::get('add_books', ['as'=>'add_books','uses'=>'PagesController@getAddBook']
 
 Route::get('add_notices', ['as'=>'add_notices','uses'=>'PagesController@getAddNotice']);
 
+Route::get('null', ['as'=>'null','uses'=>'PagesController@getNotFound']);
+
 // POST routes
 
 Route::post('login_user',['as'=>'login_user', 'before'=>'csrf', 'uses'=>'UserController@postLogin']);
