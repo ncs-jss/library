@@ -49,37 +49,41 @@
 
                             <div class="col-xs-12 col-sm-8 form-query">
                                 <h2>Suggest a book</h2>
-                                <form>
+                                <form action="submit_suggestion" method="POST">
+                                    <div class="form-group">
+                                        <label class="sr-only">Username</label>
+                                        <input type="text" class="form-control" id="" name="username" placeholder="Username">
+                                    </div>
                                     <div class="form-group">
                                         <label class="sr-only">Title:</label>
-                                        <input type="text" class="form-control" id="" placeholder="Title of the book">
+                                        <input type="text" class="form-control" id="" name="title" placeholder="Title of the book">
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only">Author:</label>
-                                        <input type="text" class="form-control" id="" placeholder="Author's Name">
+                                        <input type="text" class="form-control" id="" name="author" placeholder="Author's Name">
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only">Publisher</label>
-                                        <input type="text" class="form-control" id="" placeholder="Publisher's Name">
+                                        <input type="text" class="form-control" id="" name="publisher" placeholder="Publisher's Name">
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only">Edition</label>
-                                        <input type="text" class="form-control" id="" placeholder="Edition">
+                                        <input type="text" class="form-control" id="" name="edition" placeholder="Edition">
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only">Volume</label>
-                                        <input type="text" class="form-control" id="" placeholder="Volume">
+                                        <input type="text" class="form-control" id="" name="volume" placeholder="Volume">
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only">Review</label>
-                                        <input type="text" class="form-control" id="" placeholder="Review">
+                                        <input type="text" class="form-control" id="" name="review" placeholder="Review">
                                     </div>
-                                    <!-- <div style="color:green">{{ $err }}</div>
+                                    <div style="color:green">{{ $err }}</div>
                                     @if($errors->has())
                                     @foreach ($errors->all() as $error)
                                     <div>{{ $error }}</div>
                                     @endforeach
-                                    @endif -->
+                                    @endif
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
 
