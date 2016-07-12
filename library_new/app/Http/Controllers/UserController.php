@@ -6,6 +6,7 @@ use App\User;
 use App\Queries;
 use App\Arrivals; 
 use App\Notices;  
+use App\Suggestions;
 
 use Session;
 use Validator;
@@ -46,6 +47,8 @@ class UserController extends Controller
         }
     }
 
+
+
     public function postQuery(){
         $data=Input::all();
         array_pop($data);
@@ -53,7 +56,7 @@ class UserController extends Controller
         $validator=Validator::make($data,$rules);
 
         if($validator->fails()){
-            return redirect('query')
+            return redirect('submit_query')
             ->withErrors($validator->errors())
             ->withInput();
         }else{
@@ -65,6 +68,8 @@ class UserController extends Controller
             return view('query',['err'=>"Your Query has been submitted successfully. Thank You!!"]);
         }
     }
+
+
 
     public function postAddBook(){
         $data=Input::all();
@@ -86,6 +91,8 @@ class UserController extends Controller
         }
     }
 
+
+
     public function postAddNotice(){
         $data=Input::all();
         array_pop($data);
@@ -93,7 +100,7 @@ class UserController extends Controller
         $validator=Validator::make($data,$rules);
 
         if($validator->fails()){
-            return redirect('add_book')
+            return redirect('add_notice')
             ->withErrors($validator->errors())
             ->withInput();
         }else{
@@ -102,6 +109,40 @@ class UserController extends Controller
             $notice->subject = $data['subject'];
             $notice->save();
             return view('add_notice',['err'=>"The notice has been uploaded."]);
+        }
+    }
+
+
+
+    public function postSuggest(){
+        $data=Input::all();
+        array_pop($data);
+
+        $rules=['username'=>'required', 
+        'title'=>'required',  
+        'author'=>'required', 
+        'publisher'=>'required', 
+        'edition'=>'required', 
+        'volume'=>'required', 
+        'review'=>'required'];
+        
+        $validator=Validator::make($data,$rules);
+
+        if($validator->fails()){
+            return redirect('submit_suggestion')
+            ->withErrors($validator->errors())
+            ->withInput();
+        }else{
+            $suggestion= new Suggestions;
+            $suggestion->username = $data['username'];
+            $suggestion->title = $data['title'];
+            $suggestion->author = $data['author'];
+            $suggestion->publisher = $data['publisher'];
+            $suggestion->edition = $data['edition'];
+            $suggestion->volume = $data['volume'];
+            $suggestion->review = $data['review'];
+            $suggestion->save();
+            return view('suggest',['err'=>"Your suggestion has been submitted."]);
         }
     }
 }

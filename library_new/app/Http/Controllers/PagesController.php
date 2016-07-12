@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Notices;
 use App\Arrivals;
 use App\Queries;
+use App\Suggestions;
 
 use Illuminate\Http\Request;
 
@@ -32,7 +33,7 @@ class PagesController extends Controller
     }
 
     public function getSuggest(){
-    	return view('suggest');
+    	return view('suggest')->with('err',"");
     }
 
     public function getServices(){
@@ -71,6 +72,12 @@ class PagesController extends Controller
         $queries=Queries::Orderby('id','des')->get();
         $id=1;
         return view('queries',['queries' => $queries,'id'=>$id]);
+    }
+
+    public function getSuggestions(){
+        $suggestions=Suggestions::Orderby('id','des')->get();
+        $id=1;
+        return view('suggestions',['suggestions' => $suggestions,'id'=>$id]);
     }
 
 }
