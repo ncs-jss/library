@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Notices;
 use App\Arrivals;
+use App\Queries;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -64,5 +66,11 @@ class PagesController extends Controller
      public function getNotFound(){
         return view('errors.404');
      }
+
+     public function getViewQueries(){
+        $queries=Queries::Orderby('id','des')->get();
+        $id=1;
+        return view('queries',['queries' => $queries,'id'=>$id]);
+    }
 
 }
