@@ -74,10 +74,12 @@
                                         <label class="sr-only">Review</label>
                                         <input type="text" class="form-control" id="" placeholder="Review">
                                     </div>
-
-
-
-
+                                    <!-- <div style="color:green">{{ $err }}</div>
+                                    @if($errors->has())
+                                    @foreach ($errors->all() as $error)
+                                    <div>{{ $error }}</div>
+                                    @endforeach
+                                    @endif -->
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
 
