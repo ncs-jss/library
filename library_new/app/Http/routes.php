@@ -39,6 +39,8 @@ Route::get('add_notices', ['as'=>'add_notices','uses'=>'PagesController@getAddNo
 
 Route::get('null', ['as'=>'null','uses'=>'PagesController@getNotFound']);
 
+Route::get('view_queries', ['as'=>'view_queries','uses'=>'PagesController@getViewQueries']);
+
 // POST routes
 
 Route::post('login_user',['as'=>'login_user', 'before'=>'csrf', 'uses'=>'UserController@postLogin']);
