@@ -31,7 +31,7 @@ Route::get('e-resources', ['as'=>'resources','uses'=>'PagesController@getResourc
 
 Route::get('external-links', ['as'=>'external_links','uses'=>'PagesController@getExternalLinks']);
 
-Route::get('notice', ['as'=>'notice','uses'=>'PagesController@getNotice']);
+// Route::get('notice', ['as'=>'notice','uses'=>'PagesController@getNotice']);
 
 Route::get('add_books', ['as'=>'add_books','uses'=>'PagesController@getAddBook']);
 
@@ -40,6 +40,8 @@ Route::get('add_notices', ['as'=>'add_notices','uses'=>'PagesController@getAddNo
 Route::get('null', ['as'=>'null','uses'=>'PagesController@getNotFound']);
 
 Route::get('view_queries', ['as'=>'view_queries','uses'=>'PagesController@getViewQueries']);
+
+Route::get('view_suggestions', ['as'=>'view_suggestions','uses'=>'PagesController@getSuggestions']);
 
 // POST routes
 
