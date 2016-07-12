@@ -85,6 +85,9 @@
                                     @endforeach
                                     @endif
                                     <button type="submit" class="btn btn-primary">Submit</button>
+
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
                                 </form>
 
                             </div>
