@@ -50,3 +50,5 @@ Route::post('submit_query',['as'=>'submit_query', 'before'=>'csrf', 'uses'=>'Use
 Route::post('add_book',['as'=>'add_book', 'before'=>'csrf', 'uses'=>'UserController@postAddBook']);
 
 Route::post('add_notice',['as'=>'add_notice', 'before'=>'csrf', 'uses'=>'UserController@postAddNotice']);
+
+Route::post('submit_suggestion',['as'=>'submit_suggestion', 'before'=>'csrf', 'uses'=>'UserController@postSuggest']);
