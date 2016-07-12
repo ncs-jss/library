@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Queries;
-use App\Arrivals;
+use App\Arrivals; 
+use App\Notices;  
 
 use Session;
 use Validator;
@@ -82,6 +83,25 @@ class UserController extends Controller
             $arrival->book_desc = $data['book_desc'];
             $arrival->save();
             return view('add_book',['err'=>"The book has been added to the list."]);
+        }
+    }
+
+    public function postAddNotice(){
+        $data=Input::all();
+        array_pop($data);
+        $rules=['notice'=>'required', 'subject'=>'required'];
+        $validator=Validator::make($data,$rules);
+
+        if($validator->fails()){
+            return redirect('add_book')
+            ->withErrors($validator->errors())
+            ->withInput();
+        }else{
+            $notice= new Notices;
+            $notice->notice = $data['notice'];
+            $notice->subject = $data['subject'];
+            $notice->save();
+            return view('add_notice',['err'=>"The notice has been uploaded."]);
         }
     }
 }
