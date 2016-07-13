@@ -59,11 +59,13 @@
                                         <textarea placeholder="Reply" name="reply" rows="3" ></textarea>
                                     </div>
                                     <!-- <div style="color:green">{{ $err }}</div>
+                                    <div style="color:red">
                                     @if($errors->has())
                                     @foreach ($errors->all() as $error)
                                     <div>{{ $error }}</div>
                                     @endforeach
-                                    @endif -->
+                                    @endif
+                                    </div> -->
                                     <button type="submit" class="btn btn-primary">Submit</button>
 
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

@@ -47,7 +47,7 @@
                       <div class="container-fluid">
                         <div class="row resources-content" id="notices">
 
-                            <h2>News and Events</h2>
+                            <h2>Book Suggestions</h2>
                             <div class="col-sm-4 ">
 
 
@@ -90,7 +90,7 @@
                                         <th>#</th>    
                                         <th>Title</th>
                                         <th>Author</th>
-                                        <th>Submitted By</th>
+                                        <th>Suggested By</th>
                                     </tr>
                                 </thead>
                                 <tbody>

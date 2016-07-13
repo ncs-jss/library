@@ -60,11 +60,13 @@
                                         <input type="password" class="form-control" id="" name="password" placeholder="Password *" required>
                                     </div>
                                     <div style="color:red">{{ $err }}</div>
+                                    <div style="color:red">
                                     @if($errors->has())
                                     @foreach ($errors->all() as $error)
                                     <div>{{ $error }}</div>
                                     @endforeach
                                     @endif
+                                    </div>
                                     <button type="submit" class="btn btn-primary">Login</button>
                                     
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

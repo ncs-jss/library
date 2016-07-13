@@ -50,14 +50,6 @@
                             <div class="col-sm-8 form-query">
                                 <h2>Submit a Query</h2>
                                 <form action="submit_query" method="POST">
-                                    <!-- <div class="form-group">
-                                        <label class="sr-only">Name:</label>
-                                        <input type="text" class="form-control" id="" placeholder="Name *" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class=" sr-only">Email:</label>
-                                        <input type="email" class="form-control" id="" placeholder="Email *" required>
-                                    </div> -->
                                     <div class="form-group">
                                         <label class=" sr-only">Username:</label>
                                         <input type="text" class="form-control" id="" name="username" placeholder="Username (example- 14cse021) *" required>
@@ -66,56 +58,18 @@
                                         <label class=" sr-only">Subject:</label>
                                         <input type="text" class="form-control" id="" name="subject" placeholder="Subject *" required>
                                     </div>
-                                    <!-- <div class="form-group">
-                                        <label class="">College</label>
-                                        <label class="checkbox-inline">
-                                            <input type="radio" name="college" value="JSS" checked> JSSATE, Noida
-                                        </label>
-                                        <label class="checkbox-inline">
-                                            <input type="radio" name="college" value="other" > Other
-                                        </label>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="">Course</label>
-                                        <select>
-                                            <option value="btech" selected>B.Tech</option>
-                                            <option value="mtech">M.Tech</option>
-                                            <option value="mba">MBA</option>
-                                            <option value="mca">MCA</option>
-                                            <option value="other">Other</option>
-
-                                        </select>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="">Branch</label>
-                                        <select>
-                                            <option value="none">NA</option>
-                                            <option value="CSE"  selected>CSE</option>
-                                            <option value="IT">IT</option>
-                                            <option value="EC">EC</option>
-                                            <option value="EE">EE</option>
-                                            <option value="EN">EN</option>
-                                            <option value="IC">IC</option>
-                                            <option value="ME">ME</option>
-                                            <option value="CE">CE</option>
-                                            <option value="Other">Other</option>
-
-                                        </select>
-
-                                    </div> -->
-
                                     <div class="form-group">
                                         <label class=" sr-only">Message</label>
                                         <textarea placeholder="Message" name="query" rows="3" ></textarea>
                                     </div>
                                     <div style="color:green">{{ $err }}</div>
+                                    <div style="color:red">
                                     @if($errors->has())
                                     @foreach ($errors->all() as $error)
                                     <div>{{ $error }}</div>
                                     @endforeach
                                     @endif
+                                    </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
 
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

@@ -79,11 +79,13 @@
                                         <input type="text" class="form-control" id="" name="review" placeholder="Review">
                                     </div>
                                     <div style="color:green">{{ $err }}</div>
+                                    <div style="color:red">
                                     @if($errors->has())
                                     @foreach ($errors->all() as $error)
                                     <div>{{ $error }}</div>
                                     @endforeach
                                     @endif
+                                    </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
 
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

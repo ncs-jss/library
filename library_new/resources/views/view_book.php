@@ -47,21 +47,24 @@
                       <div class="container-fluid">
                         <div class="row resources-content" id="services">
 
-                            <h2>Subject</h2>
+                            <h2>Title</h2>
                             <div class="contact-headline">
-
-                                <p>Lorem ipsum dolor</p>
-
+                                <div>Author</div>
+                                <div>Publisher</div>
+                                <div>Edition</div>
+                                <div>Volume</div>
+                                <div>Review</div>
                             </div>
-
                         </div>
-
                       </div>
-
                     </div>
 
+
                     <div class="col-sm-1"></div>
-                
+
+
+
+
                 </div>
 
             </div>
