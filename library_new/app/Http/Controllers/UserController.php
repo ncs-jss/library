@@ -145,4 +145,22 @@ class UserController extends Controller
             return view('suggest',['err'=>"Your suggestion has been submitted."]);
         }
     }
+
+    public function postReply(){
+        $data = Input::all();
+        array_pop($data);
+
+        $validator = Validator::make($data,['reply' => 'required']);
+
+        if($validator->fails()){
+            return redirect ('submit_suggestion')
+            ->withErrors($validator->errors())
+                ->withInput();
+        }else{
+            $query= new Queries;
+            $query->reply = $data['reply'];
+            $query->save();
+            return view('view_query',['err'=>"The Reply has been sent for this query."]);
+        }
+    }
 }

@@ -53,7 +53,8 @@
                             </div>
                             <br>
                             <div class="col-sm-8 form-query">
-                                <form action="query_reply" method="POST">
+
+                                <form action="view_query/query_reply" method="POST">
                                     <div class="form-group">
                                         <label class=" sr-only">Reply:</label>
                                         <textarea placeholder="Reply" name="reply" rows="3" ></textarea>
