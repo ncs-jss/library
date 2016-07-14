@@ -47,10 +47,10 @@
                       <div class="container-fluid">
                         <div class="row resources-content" id="services">
 
-                            <h2>Subject</h2>
+                            <h2>{{ $subject }}</h2>
                             <div class="contact-headline">
 
-                                <p>Lorem ipsum dolor</p>
+                                <p>{{ $notice }}</p>
 
                             </div>
 

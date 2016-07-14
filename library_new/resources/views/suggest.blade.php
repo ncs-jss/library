@@ -76,7 +76,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only">Review:</label>
-                                        <input type="text" class="form-control" id="" name="review" placeholder="Review">
+                                        <textarea placeholder="Review" name="review" rows="3" ></textarea>
                                     </div>
                                     <div style="color:green">{{ $err }}</div>
                                     <div style="color:red">

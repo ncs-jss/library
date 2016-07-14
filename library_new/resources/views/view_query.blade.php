@@ -47,25 +47,25 @@
                       <div class="container-fluid">
                         <div class="row resources-content" id="services">
 
-                            <h2>Subject</h2>
+                            <div><h2>{{ $subject }}</h2></div>
                             <div class="contact-headline">
-                                <p>Query</p>
+                                <div><p>{{ $query }}</p><div>
                             </div>
-
+                            <br>
                             <div class="col-sm-8 form-query">
                                 <form action="query_reply" method="POST">
                                     <div class="form-group">
                                         <label class=" sr-only">Reply:</label>
                                         <textarea placeholder="Reply" name="reply" rows="3" ></textarea>
                                     </div>
-                                    <!-- <div style="color:green">{{ $err }}</div>
+                                    <div style="color:green">{{ $err }}</div>
                                     <div style="color:red">
                                     @if($errors->has())
                                     @foreach ($errors->all() as $error)
                                     <div>{{ $error }}</div>
                                     @endforeach
                                     @endif
-                                    </div> -->
+                                    </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
 
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

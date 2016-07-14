@@ -96,8 +96,8 @@
                                     @foreach($arrivals as $arrival)
                                     <tr>
                                         <td scope="row">{{ $id++ }}</th>
-                                        <td><a href="">{{ $arrival->book_name}}</a></td>
-                                        <td>24/1/2015</td>
+                                        <td><a href="{{ URL::route('view_book',$arrival['id']) }}">{{ $arrival->book_name}}</a></td>
+                                        <td>{{ $arrival->created_at }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

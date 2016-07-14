@@ -96,7 +96,7 @@
                                     @foreach ($queries as $query)
                                     <tr>
                                         <th scope="row">{{ $id++ }}</th>
-                                        <td><a href="">{{ $query->subject }}</a></td>
+                                        <td><a href="{{ URL::route('view_query',$query['id']) }}">{{ $query->subject }}</a></td>
                                         <td>{{ $query->username }}</td>
                                     </tr>
                                     @endforeach

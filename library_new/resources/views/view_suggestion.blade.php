@@ -47,13 +47,13 @@
                       <div class="container-fluid">
                         <div class="row resources-content" id="services">
 
-                            <h2>Title</h2>
+                            <h2>{{ $title }}</h2>
                             <div class="contact-headline">
-                                <div>Author</div>
-                                <div>Publisher</div>
-                                <div>Edition</div>
-                                <div>Volume</div>
-                                <div>Review</div>
+                                <div><h3>{{ $author }}</h3></div>
+                                <div><h3>{{ $publisher }}</h3></div>
+                                <div><h4>{{ $edition }}</h4></div>
+                                <div><h4>{{ $volume }}</h4></div>
+                                <div>{{ $review }}</div>
                             </div>
                         </div>
                       </div>

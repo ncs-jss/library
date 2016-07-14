@@ -80,4 +80,41 @@ class PagesController extends Controller
         return view('suggestions',['suggestions' => $suggestions,'id'=>$id]);
     }
 
+    public function getNotice($id)
+    {
+        $notice = Notices::where('id',$id)->get()[0]->notice;   
+        $subject = Notices::where('id',$id)->get()[0]->subject;
+        return view('view_notice',['subject' => $subject, 'notice' => $notice]);   
+    }
+
+    public function getViewQuery($id){
+        $query = Queries::where('id',$id)->get()[0]->query;   
+        $subject = Queries::where('id',$id)->get()[0]->subject;
+        return view('view_query',['subject' => $subject, 'query' => $query])->with('err',"");
+    }
+
+    public function getViewSuggestion($id){
+        $title = Suggestions::where('id',$id)->get()[0]->title;
+        $author = Suggestions::where('id',$id)->get()[0]->author;
+        $publisher = Suggestions::where('id',$id)->get()[0]->publisher;
+        $edition = Suggestions::where('id',$id)->get()[0]->edition;
+        $volume = Suggestions::where('id',$id)->get()[0]->volume;
+        $review = Suggestions::where('id',$id)->get()[0]->review;
+        return view('view_suggestion',['title' => $title, 
+            'author' => $author, 
+            'publisher' => $publisher, 
+            'edition' => $edition, 
+            'volume' => $volume, 
+            'review' => $review]);
+    }
+
+    public function getViewBook($id){
+        $book = Arrivals::where('id',$id)->get()[0]->book_name;
+        $book_id = Arrivals::where('id',$id)->get()[0]->book_id;
+        $book_desc = Arrivals::where('id',$id)->get()[0]->book_desc;
+        return view('view_book',['book' => $book, 
+            'book_id' => $book_id,
+            'book_desc' => $book_desc]);
+    }
+
 }

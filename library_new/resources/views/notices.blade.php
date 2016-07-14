@@ -96,8 +96,8 @@
                                     @foreach ($notices as $notice)
                                     <tr>
                                         <th scope="row">{{ $id++ }}</th>
-                                        <td><a href="">{{ $notice->subject }}</a></td>
-                                        <td>24/1/2015</td>
+                                        <td><a href="{{ URL::route('notice',$notice['id']) }}">{{ $notice->subject }}</a></td> 
+                                        <td>{{ $notice->created_at }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

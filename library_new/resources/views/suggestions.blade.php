@@ -97,7 +97,7 @@
                                     @foreach ($suggestions as $suggestion)
                                     <tr>
                                         <th scope="row">{{ $id++ }}</th>
-                                        <td><a href="">{{ $suggestion->title }}</a></td>
+                                        <td><a href="{{ URL::route('view_suggestion',$suggestion['id']) }}">{{ $suggestion->title }}</a></td>
                                         <td>{{ $suggestion->author }}</td>
                                         <td>{{ $suggestion->username }}</td>
                                     </tr>
