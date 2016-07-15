@@ -12,4 +12,5 @@
         <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.min.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('css/sidebar.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('css/services.css') }}">
+        <script src="http://cdn.ckeditor.com/4.5.10/basic/ckeditor.js"></script>
     </head>
