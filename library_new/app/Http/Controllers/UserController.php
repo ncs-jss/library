@@ -7,6 +7,7 @@ use App\Queries;
 use App\Arrivals; 
 use App\Notices;  
 use App\Suggestions;
+use App\Menu;
 
 use Session;
 use Validator;
@@ -161,6 +162,25 @@ class UserController extends Controller
             $query->reply = $data['reply'];
             $query->save();
             return view('view_query',['err'=>"The Reply has been sent for this query."]);
+        }
+    }
+
+    public function postNewMenu(){
+         $data=Input::all();
+        array_pop($data);
+        $rules=['menu_name'=>'required', 'content'=>'required'];
+        $validator=Validator::make($data,$rules);
+
+        if($validator->fails()){
+            return redirect('add_menu')
+            ->withErrors($validator->errors())
+            ->withInput();
+        }else{
+            $menu = new Menu;
+            $menu->menuname = $data['menu_name'];
+            $menu->content = $data['content'];
+            $menu->save();
+            return view('add_menu',['err'=>"New Page Created."]);
         }
     }
 }
