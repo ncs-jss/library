@@ -51,6 +51,8 @@ class UserController extends Controller
 
 
     public function postQuery(){
+        if(\Auth::check())
+        {
         $data=Input::all();
         array_pop($data);
         $rules=['username'=>'required', 'query'=>'required', 'subject'=>'required'];
@@ -68,11 +70,16 @@ class UserController extends Controller
             $query->save();
             return view('query',['err'=>"Your Query has been submitted successfully. Thank You!!"]);
         }
+    }else{
+        return redirect('login');
+    }
     }
 
 
 
     public function postAddBook(){
+        if(\Auth::check())
+        {
         $data=Input::all();
         array_pop($data);
         $rules=['book_id'=>'required', 'book_name'=>'required', 'book_desc'=>'required'];
@@ -90,11 +97,16 @@ class UserController extends Controller
             $arrival->save();
             return view('add_book',['err'=>"The book has been added to the list."]);
         }
+    }else{
+        return redirect('login');
+    }
     }
 
 
 
     public function postAddNotice(){
+        if(\Auth::check())
+        {
         $data=Input::all();
         array_pop($data);
         $rules=['notice'=>'required', 'subject'=>'required'];
@@ -111,11 +123,16 @@ class UserController extends Controller
             $notice->save();
             return view('add_notice',['err'=>"The notice has been uploaded."]);
         }
+    }else{
+        return redirect('login');
+    }
     }
 
 
 
     public function postSuggest(){
+        if(\Auth::Check())
+        {
         $data=Input::all();
         array_pop($data);
 
@@ -145,9 +162,14 @@ class UserController extends Controller
             $suggestion->save();
             return view('suggest',['err'=>"Your suggestion has been submitted."]);
         }
+        }else{
+            return redirect('login');
+        }
     }
 
     public function postReply(){
+        if(\Auth::check)
+        {
         $data = Input::all();
         array_pop($data);
 
@@ -163,9 +185,14 @@ class UserController extends Controller
             $query->save();
             return view('view_query',['err'=>"The Reply has been sent for this query."]);
         }
+        }else{
+            return redirect('login');
+        }
     }
 
     public function postNewMenu(){
+        if(\Auth::check())
+        {
          $data=Input::all();
         array_pop($data);
         $rules=['menu_name'=>'required', 'content'=>'required'];
@@ -181,6 +208,9 @@ class UserController extends Controller
             $menu->content = $data['content'];
             $menu->save();
             return view('add_menu',['err'=>"New Page Created."]);
+        }
+        }else{
+            return redirect('login');
         }
     }
 }
