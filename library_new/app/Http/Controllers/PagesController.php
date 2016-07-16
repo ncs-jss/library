@@ -38,9 +38,6 @@ class PagesController extends Controller
         if(\Auth::Check()){
         $user = User::where('username', Session::get('username'))->first();
         return Redirect::back();
-        // return view('index')
-        // ->with('username',$user->username)
-        // ->with('level',$user->level);
         }else{
     	return view('admin-login')
         ->with('err',"")
@@ -168,26 +165,32 @@ class PagesController extends Controller
     public function getAddBook(){
         if(\Auth::Check()){
         $user = User::where('username', Session::get('username'))->first();
+        if($user->level==0)
+        {
         return view('add_book')
         ->with('username',$user->username)
-        ->with('level',$user->level);
+        ->with('level',$user->level)->with('err',"");
         }else{
-        return view('add_book')
-        ->with('username',"Guest")
-        ->with('level',3);
+            return redirect('/');
+        }
+        }else{
+            return redirect('login');
         }
      }
 
      public function getAddNotice(){
         if(\Auth::Check()){
         $user = User::where('username', Session::get('username'))->first();
+        if($user->level==0)
+        {
         return view('add_notice')
         ->with('username',$user->username)
         ->with('level',$user->level);
         }else{
-        return view('add_notice')
-        ->with('username',"Guest")
-        ->with('level',3);
+            return redirect('/');   
+        }
+        }else{
+            return redirect('login');
         }
      }
 
@@ -342,7 +345,7 @@ class PagesController extends Controller
         session_unset();
         // $user = Session::get('username');
         // echo $user;
-        return Redirect::back();
+        return redirect('/');
     }
 
 }
