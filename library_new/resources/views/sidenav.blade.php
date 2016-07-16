@@ -17,8 +17,7 @@
 
                                 <li class="list-group-item dropdown-toggle"><a href="{{route('services')}}">Services</a></li>
                                 <li class="list-group-item dropdown-toggle"><a href="{{route('new_arrivals')}}">New Arrival</a></li>
-                                <li class="list-group-item dropdown-toggle"><a href="{{route('login')}}">Admin Login</a></li>
-                                <li class="list-group-item dropdown-toggle"><a href="{{route('services')}}">Services</a></li>
+                                <li class="list-group-item dropdown-toggle"><a href="{{route('login')}}">Users Login</a></li>
                                 <li class="list-group-item dropdown-toggle"><a href="{{route('null')}}">Library OPAC</a></li>
 
                             </ul>
@@ -31,16 +30,28 @@
                           <div class="custom-collapse">
                             <div>
                               <label class="sidebar-label">
-                                <h1 id="other-headline">Ask Librarian  <span class="hidden-sm hidden-md hidden-lg "> <i class="fa fa-caret-down"></i></span> </h1>
+                                <h1 id="other-headline">
+                                  @if($level!=0)
+                                  Ask Librarian
+                                  @else
+                                  Librarian Tasks 
+                                  @endif
+                                  <span class="hidden-sm hidden-md hidden-lg "> <i class="fa fa-caret-down"></i></span> </h1>
                                 <button class="collapse-toggle " type="button" data-toggle="collapse" data-parent="custom-collapse" data-target="#side-menu-collapse-2"></button>
                               </label>
                             </div>
                             <hr class="orange">
                             <ul class="list-group collapse" id="side-menu-collapse-2">
-
+                                @if($level!=0)
                                 <li class="list-group-item dropdown-toggle" ><a href="{{route('query')}}">Submit Query</a></li>
                                 <li class="list-group-item dropdown-toggle" ><a href="{{route('suggest')}}">Suggest Books</a></li>
-
+                                @else
+                                <li class="list-group-item dropdown-toggle" ><a href="{{route('queries')}}">Queries</a></li>
+                                <li class="list-group-item dropdown-toggle" ><a href="{{route('suggestions')}}">Suggested Books</a></li>
+                                <li class="list-group-item dropdown-toggle" ><a href="{{route('add_books')}}">Add Books</a></li>
+                                <li class="list-group-item dropdown-toggle" ><a href="{{route('add_menu')}}">Add Menu Item</a></li>
+                                <li class="list-group-item dropdown-toggle" ><a href="{{route('add_notices')}}">Add Notices</a></li>
+                                @endif 
                             </ul>
                           </div>
 
