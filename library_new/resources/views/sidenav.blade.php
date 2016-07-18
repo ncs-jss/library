@@ -18,6 +18,9 @@
                                 <li class="list-group-item dropdown-toggle"><a href="{{route('services')}}">Services</a></li>
                                 <li class="list-group-item dropdown-toggle"><a href="{{route('new_arrivals')}}">New Arrival</a></li>
                                 <li class="list-group-item dropdown-toggle"><a href="{{route('login')}}">Users Login</a></li>
+                                @if($level!=0)
+                                <li class="list-group-item dropdown-toggle"><a href="{{route('home')}}">View Queries</a></li>
+                                @endif
                                 <li class="list-group-item dropdown-toggle"><a href="{{route('null')}}">Library OPAC</a></li>
 
                             </ul>
