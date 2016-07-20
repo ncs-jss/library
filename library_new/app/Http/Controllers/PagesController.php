@@ -87,27 +87,7 @@ class PagesController extends Controller
     }
 
 
-    public function getSuggest(){
-        if(\Auth::Check()){
-        $user = User::where('username', Session::get('username'))->first();
-         if(Session::get('err') == '1'){
-            return view('suggest',['err'=>"Your suggestion has been submitted."])
-            ->with('username',$user->username)
-            ->with('level',$user->level);
-         }else{
-            return view('suggest')
-            ->with('err',"")
-            ->with('username',$user->username)
-            ->with('level',$user->level);
-         }
-        }else{
-        return view('suggest')
-        ->with('err',"")
-        ->with('username',"Guest")
-        ->with('level',3);
-        }
-    }
-
+    
     public function getServices(){
         if(\Auth::Check()){
         $user = User::where('username', Session::get('username'))->first();
@@ -121,28 +101,7 @@ class PagesController extends Controller
         }
     }
 
-    public function getQuery(){
-        if(\Auth::Check()){
-        $user = User::where('username', Session::get('username'))->first();
-            if(Session::get('err') == '1')
-            {
-                return view('query',['err'=>"Your Query has been submitted successfully. Thank You!!"])
-                ->with('username',$user->username)
-                ->with('level',$user->level);
-            }else{
-                return view('query')
-                ->with('err',"")
-                ->with('username',$user->username)
-                ->with('level',$user->level);
-            }
-        }else{
-        return view('query')
-        ->with('err',"")
-        ->with('username',"Guest")
-        ->with('level',3);
-        }
-    }
-
+    
     public function getContact(){
         if(\Auth::Check()){
         $user = User::where('username', Session::get('username'))->first();
@@ -185,17 +144,8 @@ class PagesController extends Controller
      
 
      public function getNotFound(){
-        if(\Auth::Check()){
-        $user = User::where('username', Session::get('username'))->first();
-        return view('errors.404')
-        ->with('username',$user->username)
-        ->with('level',$user->level);
-        }else{
-        return view('errors.404')
-        ->with('username',"Guest")
-        ->with('level',3);
-        }
-     }
+        return view('errors.404');
+    }
 
      
 
@@ -210,10 +160,7 @@ class PagesController extends Controller
             ->with('username',$user->username)
             ->with('level',$user->level);
         }else{
-        return view('view_notice',['subject' => $subject, 
-            'notice' => $notice])
-            ->with('username',"Guest")
-            ->with('level',3);
+        return redirect('login');
         }  
     }
 
@@ -231,27 +178,58 @@ class PagesController extends Controller
             ->with('username',$user->username)
             ->with('level',$user->level);
         }else{
-        return view('view_book',['book' => $book, 
-            'book_id' => $book_id,
-            'book_desc' => $book_desc])
-            ->with('username',"Guest")
-            ->with('level',3);
+            return redirect('login');        
         }
     }
 
     public function getUserQueries(){
         $queries = Queries::where('username', Session::get('username'))->get();
-        // foreach($queries as $query)
-        //     echo $query;
         if(\Auth::Check()){
         $user = User::where('username', Session::get('username'))->first();
-        return view('errors.404')
+        return view('user_queries')
         ->with('username',$user->username)
-        ->with('level',$user->level);
+        ->with('level',$user->level)
+        ->with('queries',$queries);
         }else{
-        return view('errors.404')
-        ->with('username',"Guest")
-        ->with('level',3);
+        return redirect('login');
+        }
+    }
+
+
+    public function getQuery(){
+        if(\Auth::Check()){
+        $user = User::where('username', Session::get('username'))->first();
+            if(Session::get('err') == '1')
+            {
+                return view('query',['err'=>"Your Query has been submitted successfully. Thank You!!"])
+                ->with('username',$user->username)
+                ->with('level',$user->level);
+            }else{
+                return view('query')
+                ->with('err',"")
+                ->with('username',$user->username)
+                ->with('level',$user->level);
+            }
+        }else{
+        return redirect('login');
+        }
+    }
+
+    public function getSuggest(){
+        if(\Auth::Check()){
+        $user = User::where('username', Session::get('username'))->first();
+         if(Session::get('err') == '1'){
+            return view('suggest',['err'=>"Your suggestion has been submitted."])
+            ->with('username',$user->username)
+            ->with('level',$user->level);
+         }else{
+            return view('suggest')
+            ->with('err',"")
+            ->with('username',$user->username)
+            ->with('level',$user->level);
+         }
+        }else{
+        return redirect('login');
         }
     }
 
