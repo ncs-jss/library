@@ -90,7 +90,11 @@
                                     @foreach ($queries as $query)
                                     <tr>
                                         <th scope="row">{{ $id++ }}</th>
+                                        @if($query->replied == 0)
                                         <td><a href="{{ URL::route('view_query',$query['id']) }}">{{ $query->subject }}</a></td>
+                                        @else
+                                        <td>{{ $query->subject }}</td>
+                                        @endif
                                         <td>{{ $query->username }}</td>
                                     </tr>
                                     @endforeach
