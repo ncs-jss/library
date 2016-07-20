@@ -29,9 +29,8 @@
                                         <li><a href="{{route('contact')}}">Contact Us</a></li>
                                         <li><a href="{{route('external_links')}}">External Links</a></li>
                                         <li class="dropdown hidden-xs" >
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user"></span>  User  <span class="caret"></span></a>
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user"></span> &nbsp {{ $username }} &nbsp<span class="caret"></span></a>
                                             <ul class="dropdown-menu">
-                                              <li><a href="#">Welcome {{ $username }}</a></li>
                                               @if($level!=3)
                                               <li><a href="{{ URL::route('logout')}}">Logout</a></li>
                                               @else

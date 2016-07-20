@@ -43,7 +43,7 @@ class UserController extends Controller
                 return redirect('/');
             }else{
                 Session::flash('err',"1");
-                return view('admin-login',['err'=>"Username Or Password did not match."]);
+                return redirect('login');
             }
         }
     }
@@ -68,7 +68,8 @@ class UserController extends Controller
             $query->subject = $data['subject'];
             $query->query = $data['query'];
             $query->save();
-            return view('query',['err'=>"Your Query has been submitted successfully. Thank You!!"]);
+            Session::flash('err',"1");
+            return redirect('query');
         }
     }else{
         return redirect('login');
@@ -95,7 +96,8 @@ class UserController extends Controller
             $arrival->book_name = $data['book_name'];
             $arrival->book_desc = $data['book_desc'];
             $arrival->save();
-            return view('add_book',['err'=>"The book has been added to the list."]);
+            Session::flash('err',"1");
+            return redirect('add_books');
         }
     }else{
         return redirect('login');
@@ -121,7 +123,8 @@ class UserController extends Controller
             $notice->notice = $data['notice'];
             $notice->subject = $data['subject'];
             $notice->save();
-            return view('add_notice',['err'=>"The notice has been uploaded."]);
+            Session::flash('err',"1");
+            return redirect('add_notices');
         }
     }else{
         return redirect('login');
@@ -160,13 +163,14 @@ class UserController extends Controller
             $suggestion->volume = $data['volume'];
             $suggestion->review = $data['review'];
             $suggestion->save();
-            return view('suggest',['err'=>"Your suggestion has been submitted."]);
+            Session::flash('err',"1");
+            return redirect('suggest');
         }
         }else{
             return redirect('login');
         }
     }
-
+    //Nelabh sir check
     public function postReply(){
         if(\Auth::check)
         {

@@ -33,25 +33,27 @@ Route::get('external-links', ['as'=>'external_links','uses'=>'PagesController@ge
 
 Route::get('notice/{id}', ['as'=>'notice','uses'=>'PagesController@getNotice']);
 
-Route::get('add_books', ['as'=>'add_books','uses'=>'PagesController@getAddBook']);
+Route::get('add_books', ['as'=>'add_books','uses'=>'AdminPagesController@getAddBook']);
 
-Route::get('add_notices', ['as'=>'add_notices','uses'=>'PagesController@getAddNotice']);
+Route::get('add_notices', ['as'=>'add_notices','uses'=>'AdminPagesController@getAddNotice']);
 
 Route::get('null', ['as'=>'null','uses'=>'PagesController@getNotFound']);
 
-Route::get('queries', ['as'=>'queries','uses'=>'PagesController@getViewQueries']);
+Route::get('queries', ['as'=>'queries','uses'=>'AdminPagesController@getViewQueries']);
 
-Route::get('suggestions', ['as'=>'suggestions','uses'=>'PagesController@getSuggestions']);
+Route::get('suggestions', ['as'=>'suggestions','uses'=>'AdminPagesController@getSuggestions']);
 
-Route::get('view_query/{id}', ['as'=>'view_query','uses'=>'PagesController@getViewQuery']);
+Route::get('view_query/{id}', ['as'=>'view_query','uses'=>'AdminPagesController@getViewQuery']);
 
 Route::get('view_book/{id}', ['as'=>'view_book','uses'=>'PagesController@getViewBook']);
 
-Route::get('view_suggestion/{id}', ['as'=>'view_suggestion','uses'=>'PagesController@getViewSuggestion']);
+Route::get('view_suggestion/{id}', ['as'=>'view_suggestion','uses'=>'AdminPagesController@getViewSuggestion']);
 
-Route::get('add_menu',['as'=>'add_menu','uses'=>'PagesController@getAddMenu']);
+Route::get('add_menu',['as'=>'add_menu','uses'=>'AdminPagesController@getAddMenu']);
 
 Route::get('logout',['as'=>'logout','uses'=>'PagesController@logout']);
+
+Route::get('user_queries', ['as'=>'user_queries','uses'=>'PagesController@getUserQueries']);
 
 // POST routes
 
