@@ -182,20 +182,7 @@ class PagesController extends Controller
         }
     }
 
-    public function getUserQueries(){
-        $queries = Queries::where('username', Session::get('username'))->get();
-        if(\Auth::Check()){
-        $user = User::where('username', Session::get('username'))->first();
-        return view('user_queries')
-        ->with('username',$user->username)
-        ->with('level',$user->level)
-        ->with('queries',$queries);
-        }else{
-        return redirect('login');
-        }
-    }
-
-
+    
     public function getQuery(){
         if(\Auth::Check()){
         $user = User::where('username', Session::get('username'))->first();
@@ -215,6 +202,7 @@ class PagesController extends Controller
         }
     }
 
+
     public function getSuggest(){
         if(\Auth::Check()){
         $user = User::where('username', Session::get('username'))->first();
@@ -232,6 +220,24 @@ class PagesController extends Controller
         return redirect('login');
         }
     }
+
+
+    public function getUserQueries(){
+        $queries = Queries::where('username', Session::get('username'))->get();
+        $id=1;
+
+        if(\Auth::Check()){
+        $user = User::where('username', Session::get('username'))->first();
+        return view('user_queries')
+        ->with('username',$user->username)
+        ->with('level',$user->level)
+        ->with('queries',$queries)
+        ->with('id',$id);
+        }else{
+        return redirect('login');
+        }
+    }
+
 
 
     public function logout(){
