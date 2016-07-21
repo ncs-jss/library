@@ -52,7 +52,7 @@
                               <div class="row">
                                   
                                   <div class="col-xs-12 col-sm-6 ">
-                                      <form action="new_menu" method="POST">
+                                      <form action="{{ URL::route('edit',$id)}}" method="POST">
                                         <div class="form-group">
                                             <label class="sr-only">Menu Name:</label>
                                             <input type="text" class="form-control" id="" name="menu_name" value="{{ $menuname }}"  required ></input>
