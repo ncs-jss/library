@@ -72,6 +72,8 @@ Route::post('add_notice',['as'=>'add_notice', 'before'=>'csrf', 'uses'=>'UserCon
 
 Route::post('submit_suggestion',['as'=>'submit_suggestion', 'before'=>'csrf', 'uses'=>'UserController@postSuggest']);
 
-Route::post('view_query/query_reply/{id}',['as'=>'query_reply', 'before'=>'csrf', 'uses'=>'UserController@postReply']);
+Route::post('query_reply/{id}',['as'=>'query_reply', 'before'=>'csrf', 'uses'=>'UserController@postReply']);
 
 Route::post('new_menu',['as'=>'new_menu', 'before'=>'csrf', 'uses'=>'UserController@postNewMenu']);
+
+Route::post('edit_menu/{id}',['as'=>'edit', 'before'=>'csrf', 'uses'=>'UserController@postEditMenu']);
