@@ -60,7 +60,7 @@
                             <!--Nelabh sir HELP!! -->
                             <!-- I want to show a message that you have not submitted any queries. -->
                             @foreach($queries as $query)
-                            @if($query->subject == '')
+                            @if(isset($query->id))
                             <div style="text-align:center;color:red">You have not Submitted Any Query Yet.</div>
                             @endif
                             @endforeach
