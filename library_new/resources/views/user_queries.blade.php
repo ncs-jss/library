@@ -47,7 +47,7 @@
                       <div class="container-fluid">
                         <div class="row resources-content" id="services">
                             @foreach($queries as $query)
-                            <div><h2>{{ $id }}&nbsp &nbsp{{ $query->subject }}</h3></div>
+                            <div><h2>{{ $id++ }}&nbsp &nbsp{{ $query->subject }}</h3></div>
                             <div class="contact-headline">
                                 <div><h4>Query:</h4></div>
                                 <div><p>{{ $query->query }}</p><div>
@@ -57,10 +57,10 @@
                             </div>
                             @endforeach
 
-                            <!--Nelabh sir HELP!! -->
+                            <!--Nelabh sir/Sushumna ma'am Problem!! -->
                             <!-- I want to show a message that you have not submitted any queries. -->
                             @foreach($queries as $query)
-                            @if(isset($query->id))
+                            @if($query->subject)
                             <div style="text-align:center;color:red">You have not Submitted Any Query Yet.</div>
                             @endif
                             @endforeach
