@@ -52,7 +52,7 @@
                                 <li class="list-group-item dropdown-toggle" ><a href="{{route('queries')}}">Queries</a></li>
                                 <li class="list-group-item dropdown-toggle" ><a href="{{route('suggestions')}}">Suggested Books</a></li>
                                 <li class="list-group-item dropdown-toggle" ><a href="{{route('add_books')}}">Add Books</a></li>
-                                <li class="list-group-item dropdown-toggle" ><a href="{{route('view_menu')}}">View Menu Item</a></li>
+                                <li class="list-group-item dropdown-toggle" ><a href="{{route('view_menus')}}">View Menu Item</a></li>
                                 <li class="list-group-item dropdown-toggle" ><a href="{{route('add_notices')}}">Add Notices</a></li>
                                 @endif 
                             </ul>
