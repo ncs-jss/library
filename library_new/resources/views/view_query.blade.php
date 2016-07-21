@@ -54,7 +54,7 @@
                             <br>
                             <div class="col-sm-8 form-query">
 
-                                <form action="query_reply/[$id]" method="POST">
+                                <form action="{{ URL::route('query_reply',$id) }}" method="POST">
                                     <div class="form-group">
                                         <label class=" sr-only">Reply:</label>
                                         <textarea placeholder="Reply" name="reply" rows="3" ></textarea>
