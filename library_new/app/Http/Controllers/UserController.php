@@ -31,7 +31,7 @@ class UserController extends Controller
         $validator = Validator::make($data, $rules);
 
         if($validator->fails()){
-            return redirect('login')
+            return Redirect::back()
             ->withErrors($validator->errors())
             ->withInput();
         }
@@ -59,7 +59,7 @@ class UserController extends Controller
         $validator=Validator::make($data,$rules);
 
         if($validator->fails()){
-            return redirect('submit_query')
+            return Redirect::back()
             ->withErrors($validator->errors())
             ->withInput();
         }else{
@@ -87,7 +87,7 @@ class UserController extends Controller
         $validator=Validator::make($data,$rules);
 
         if($validator->fails()){
-            return redirect('add_book')
+            return Redirect::back()
             ->withErrors($validator->errors())
             ->withInput();
         }else{
@@ -115,7 +115,7 @@ class UserController extends Controller
         $validator=Validator::make($data,$rules);
 
         if($validator->fails()){
-            return redirect('add_notice')
+            return Redirect::back()
             ->withErrors($validator->errors())
             ->withInput();
         }else{
@@ -150,7 +150,7 @@ class UserController extends Controller
         $validator=Validator::make($data,$rules);
 
         if($validator->fails()){
-            return redirect('submit_suggestion')
+            return Redirect::back()
             ->withErrors($validator->errors())
             ->withInput();
         }else{
@@ -170,9 +170,10 @@ class UserController extends Controller
             return redirect('login');
         }
     }
-    //Debug
+
+
     public function postReply($id){
-        if(\Auth::check)
+        if(\Auth::check())
         {
         $data = Input::all();
         array_pop($data);
@@ -180,7 +181,7 @@ class UserController extends Controller
         $validator = Validator::make($data,['reply' => 'required']);
 
         if($validator->fails()){
-            return redirect ('submit_suggestion')
+            return Redirect::back()
             ->withErrors($validator->errors())
                 ->withInput();
         }else{
@@ -188,14 +189,12 @@ class UserController extends Controller
             $query->reply = $data['reply'];
             $query->replied = 1;
             $query->save();
-            Session::flash('err',"1");
-            return redirect('view_query');
+            return redirect('queries');
         }
         }else{
             return redirect('login');
         }
     }
-    // Debug
 
     public function postNewMenu(){
         if(\Auth::check())
@@ -206,7 +205,7 @@ class UserController extends Controller
         $validator=Validator::make($data,$rules);
 
         if($validator->fails()){
-            return redirect('add_menu')
+            return Redirect::back()
             ->withErrors($validator->errors())
             ->withInput();
         }else{
@@ -215,11 +214,37 @@ class UserController extends Controller
             $menu->content = $data['content'];
             $menu->status = 1;
             $menu->save();
-            Session::flash('err',"1");
-            return redirect('add_menu');
+            return redirect('view_menus');
         }
         }else{
             return redirect('login');
         }
     }
+
+
+    public function postEditMenu($id){
+        if(\Auth::check())
+        {
+         $data=Input::all();
+        array_pop($data);
+        $rules=['menu_name'=>'required', 'content'=>'required'];
+        $validator=Validator::make($data,$rules);
+
+        if($validator->fails()){
+            return Redirect::back()
+            ->withErrors($validator->errors())
+            ->withInput();
+        }else{
+            $menu=Menu::where('id',$id)->first();
+            $menu->menuname = $data['menu_name'];
+            $menu->content = $data['content'];
+            $menu->status = $data['status'];
+            $menu->save();
+            return redirect('view_menus');
+        }
+        }else{
+            return redirect('login');
+        }
+    }
+
 }
