@@ -7,6 +7,7 @@ use App\Notices;
 use App\Arrivals;
 use App\Queries;
 use App\Suggestions;
+use App\Menu;
 
 use Session;
 use Validator;
@@ -139,9 +140,7 @@ class AdminPagesController extends Controller{
         if(\Auth::Check()){
         	if($user->level == 0){
                 if(Session::get('err') == '1'){
-        		  return redirect('queries')
-        	       ->with('username',$user->username)
-            	   ->with('level',$user->level);
+        		  return redirect('queries');
                 }else{
                     return view('view_query',['subject' => $subject, 
                    'query' => $query, 
@@ -161,11 +160,18 @@ class AdminPagesController extends Controller{
         if(\Auth::Check()){
         $user = User::where('username', Session::get('username'))->first();
         if($user->level == 0){
-            return view('add_menu')
-            ->with('err',"")
-            ->with('username',$user->username)
-            ->with('level',$user->level);
+            if(Session::get('err') == '1'){
+                return view('add_menu')
+                ->with('err',"New Menu Created")
+                ->with('username',$user->username)
+                ->with('level',$user->level);
             }else{
+                return view('add_menu')
+                ->with('err',"")
+                ->with('username',$user->username)
+                ->with('level',$user->level);
+            }
+        }else{
                 return redirect('/');
             }        
         }else{
@@ -173,13 +179,43 @@ class AdminPagesController extends Controller{
         }
     }
 
-    public function getVeiwMenu(){
+    public function getViewMenu(){
+        $menus=Menu::Orderby('id','des')->get();
+        $id=1;
         if(\Auth::Check()){
             $user = User::where('username', Session::get('username'))->first();
             if($user->level  == 0){
-                return view('view_menu')
+                return view('menus')
+                ->with('menus',$menus)
+                ->with('id',$id)
                 ->with('username',$user->username)
                 ->with('level',$user->level);
+            }else{
+                return redirect('/');
+            }
+        }else{
+            return redirect('login');
+        }
+    }
+
+    public function getEditMenu($id){
+        $menu = Menu::where('id',$id)->get()[0]->menuname;   
+        $content = Menu::where('id',$id)->get()[0]->content;
+        $status = Menu::where('id',$id)->get()[0]->status;
+        $user = User::where('username', Session::get('username'))->first();
+        if(\Auth::Check()){
+            if($user->level == 0){
+                if(Session::get('err') == '1'){
+                  return redirect('view_menus');
+                }else{
+                    return view('edit_menu',['menuname' => $menu, 
+                   'content' => $content, 
+                   'status' => $status,
+                   'err' =>"",
+                   'id' => $id])
+                   ->with('username',$user->username)
+                   ->with('level',$user->level);
+                }
             }else{
                 return redirect('/');
             }
