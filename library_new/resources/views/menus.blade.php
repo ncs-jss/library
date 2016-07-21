@@ -65,12 +65,9 @@
                                 </div>
 
                             </div>
-                            <div class="col-sm-2"></div>
-                            <div class="col-sm-6 search">
-
-
-                
-
+                            <div class="col-sm-6"></div>
+                            <div class="col-sm-2 search">
+                                <a href="{{URL::route('add_menu')}}"><button class="btn btn-primary">Add Menu Item</button></a>
                             </div>
 
 
@@ -83,7 +80,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>News/Events</th>
+                                        <th>Menu name</th>
                                         <th>Posted On</th>
                                     </tr>
                                 </thead>
@@ -91,7 +88,7 @@
                                     @foreach ($menus as $menu)
                                     <tr>
                                         <th scope="row">{{ $id++ }}</th>
-                                        <td><a href="{{ URL::route('notice',$notice['id']) }}">{{ $menu->subject }}</a></td> 
+                                        <td><a href="{{ URL::route('edit_menu',$menu['id']) }}">{{ $menu->menuname }}</a></td> 
                                         <td>{{ $menu->created_at }}</td>
                                     </tr>
                                     @endforeach
