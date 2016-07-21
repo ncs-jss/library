@@ -213,8 +213,10 @@ class UserController extends Controller
             $menu = new Menu;
             $menu->menuname = $data['menu_name'];
             $menu->content = $data['content'];
+            $menu->status = 1;
             $menu->save();
-            return view('add_menu',['err'=>"New Page Created."]);
+            Session::flash('err',"1");
+            return redirect('add_menu');
         }
         }else{
             return redirect('login');
