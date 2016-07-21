@@ -285,7 +285,22 @@ class PagesController extends Controller
     public function getCustomMenu($name){
         $menu=Menu::Orderby('id','des')->get();
         $content= Menu::where('menuname',$name)->get()[0]->content;
-        echo $content;
+        if(\Auth::Check()){
+        $user = User::where('username', Session::get('username'))->first();
+        return view('custom')
+        ->with('username',$user->username)
+        ->with('level',$user->level)
+        ->with('menu',$menu)
+        ->with('name',$name)
+        ->with('content',$content);
+        }else{
+        return view('custom')
+        ->with('username',"Guest")
+        ->with('level',3)
+        ->with('menu',$menu)
+        ->with('name',$name)
+        ->with('content',$content);
+        }
     }
 
 }
