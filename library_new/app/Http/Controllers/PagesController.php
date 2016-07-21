@@ -7,6 +7,7 @@ use App\Notices;
 use App\Arrivals;
 use App\Queries;
 use App\Suggestions;
+use App\Menu;
 
 use Session;
 use Validator;
