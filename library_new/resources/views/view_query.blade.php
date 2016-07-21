@@ -54,12 +54,11 @@
                             <br>
                             <div class="col-sm-8 form-query">
 
-                                <form action="view_query/query_reply" method="POST">
+                                <form action="query_reply/[$id]" method="POST">
                                     <div class="form-group">
                                         <label class=" sr-only">Reply:</label>
                                         <textarea placeholder="Reply" name="reply" rows="3" ></textarea>
                                     </div>
-                                    <div style="color:green">{{ $err }}</div>
                                     <div style="color:red">
                                     @if($errors->has())
                                     @foreach ($errors->all() as $error)

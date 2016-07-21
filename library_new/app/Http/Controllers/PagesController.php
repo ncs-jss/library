@@ -221,7 +221,7 @@ class PagesController extends Controller
         }
     }
 
-
+// Debug
     public function getUserQueries(){
         $queries = Queries::where('username', Session::get('username'))->get();
         $id=1;
@@ -237,7 +237,7 @@ class PagesController extends Controller
         return redirect('login');
         }
     }
-
+// Debug
 
 
     public function logout(){

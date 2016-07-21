@@ -55,6 +55,8 @@ Route::get('logout',['as'=>'logout','uses'=>'PagesController@logout']);
 
 Route::get('user_queries', ['as'=>'user_queries','uses'=>'PagesController@getUserQueries']);
 
+Route::get('view_menu',['as'=>'view_menu','uses'=>'AdminPagesController@getViewMenu']);
+
 // POST routes
 
 Route::post('login_user',['as'=>'login_user', 'before'=>'csrf', 'uses'=>'UserController@postLogin']);
@@ -67,6 +69,6 @@ Route::post('add_notice',['as'=>'add_notice', 'before'=>'csrf', 'uses'=>'UserCon
 
 Route::post('submit_suggestion',['as'=>'submit_suggestion', 'before'=>'csrf', 'uses'=>'UserController@postSuggest']);
 
-Route::post('view_query/query_reply',['as'=>'view_query/query_reply', 'before'=>'csrf', 'uses'=>'UserController@postReply']);
+Route::post('view_query/query_reply/{id}',['as'=>'query_reply', 'before'=>'csrf', 'uses'=>'UserController@postReply']);
 
 Route::post('new_menu',['as'=>'new_menu', 'before'=>'csrf', 'uses'=>'UserController@postNewMenu']);

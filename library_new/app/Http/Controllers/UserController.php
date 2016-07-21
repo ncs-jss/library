@@ -170,8 +170,8 @@ class UserController extends Controller
             return redirect('login');
         }
     }
-    //Nelabh sir check
-    public function postReply(){
+    //Debug
+    public function postReply($id){
         if(\Auth::check)
         {
         $data = Input::all();
@@ -184,15 +184,18 @@ class UserController extends Controller
             ->withErrors($validator->errors())
                 ->withInput();
         }else{
-            $query= new Queries;
+            $query= Queries::where('id',$id)->first();
             $query->reply = $data['reply'];
+            $query->replied = 1;
             $query->save();
-            return view('view_query',['err'=>"The Reply has been sent for this query."]);
+            Session::flash('err',"1");
+            return redirect('view_query');
         }
         }else{
             return redirect('login');
         }
     }
+    // Debug
 
     public function postNewMenu(){
         if(\Auth::check())

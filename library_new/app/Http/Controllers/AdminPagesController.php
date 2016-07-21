@@ -131,18 +131,24 @@ class AdminPagesController extends Controller{
         	return redirect('login');
         }
     }
-
+    // Debug
 	public function getViewQuery($id){
         $query = Queries::where('id',$id)->get()[0]->query;   
         $subject = Queries::where('id',$id)->get()[0]->subject;
+        $user = User::where('username', Session::get('username'))->first();
         if(\Auth::Check()){
-        	$user = User::where('username', Session::get('username'))->first();
         	if($user->level == 0){
-        		return view('view_query',['subject' => $subject, 
-            	'query' => $query])
-                ->with('err',"")
-        	    ->with('username',$user->username)
-            	->with('level',$user->level);
+                if(Session::get('err') == '1'){
+        		  return redirect('queries')
+        	       ->with('username',$user->username)
+            	   ->with('level',$user->level);
+                }else{
+                    return view('view_query',['subject' => $subject, 
+                   'query' => $query, 
+                   'id' => $id])
+                   ->with('username',$user->username)
+                   ->with('level',$user->level);
+                }
         	}else{
         		return redirect('/');
         	}
@@ -150,7 +156,7 @@ class AdminPagesController extends Controller{
         	return redirect('login');
         }
     }
-
+    // Debug
 	public function getAddMenu(){
         if(\Auth::Check()){
         $user = User::where('username', Session::get('username'))->first();
@@ -163,7 +169,23 @@ class AdminPagesController extends Controller{
                 return redirect('/');
             }        
         }else{
-        return redirect('login');
+            return redirect('login');
         }
     }
+
+    public function getVeiwMenu(){
+        if(\Auth::Check()){
+            $user = User::where('username', Session::get('username'))->first();
+            if($user->level  == 0){
+                return view('view_menu')
+                ->with('username',$user->username)
+                ->with('level',$user->level);
+            }else{
+                return redirect('/');
+            }
+        }else{
+            return redirect('login');
+        }
+    }
+
 }
