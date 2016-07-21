@@ -55,7 +55,9 @@ Route::get('logout',['as'=>'logout','uses'=>'PagesController@logout']);
 
 Route::get('user_queries', ['as'=>'user_queries','uses'=>'PagesController@getUserQueries']);
 
-Route::get('view_menu',['as'=>'view_menu','uses'=>'AdminPagesController@getViewMenu']);
+Route::get('view_menus',['as'=>'view_menus','uses'=>'AdminPagesController@getViewMenu']);
+
+Route::get('edit_menu/{id}',['as'=>'edit_menu','uses'=>'AdminPagesController@getEditMenu']);
 
 // POST routes
 
