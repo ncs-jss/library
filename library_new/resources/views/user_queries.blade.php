@@ -47,12 +47,13 @@
                       <div class="container-fluid">
                         <div class="row resources-content" id="services">
                             @foreach($queries as $query)
-                            <div><h2>{{ $id }}&nbsp &nbsp{{ $query->subject }}</h2></div>
+                            <div><h2>{{ $id }}&nbsp &nbsp{{ $query->subject }}</h3></div>
                             <div class="contact-headline">
                                 <div><h4>Query:</h4></div>
                                 <div><p>{{ $query->query }}</p><div>
                                 <div><h4>Reply:</h4></div>
                                 <div><p>{{ $query->reply}}</p></div>
+                                <br><br>
                             </div>
                             @endforeach
 
