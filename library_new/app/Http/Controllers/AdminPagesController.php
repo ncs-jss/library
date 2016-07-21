@@ -144,7 +144,7 @@ class AdminPagesController extends Controller{
         	return redirect('login');
         }
     }
-    // Debug
+
 	public function getViewQuery($id){
         $menu=Menu::Orderby('id','des')->get();
         $query = Queries::where('id',$id)->get()[0]->query;   
@@ -169,7 +169,7 @@ class AdminPagesController extends Controller{
         	return redirect('login');
         }
     }
-    // Debug
+
 	public function getAddMenu(){
         $menu=Menu::Orderby('id','des')->get();
         if(\Auth::Check()){
@@ -219,7 +219,7 @@ class AdminPagesController extends Controller{
 
     public function getEditMenu($id){
         $menu=Menu::Orderby('id','des')->get();
-        $menu = Menu::where('id',$id)->get()[0]->menuname;   
+        $menuname = Menu::where('id',$id)->get()[0]->menuname;   
         $content = Menu::where('id',$id)->get()[0]->content;
         $status = Menu::where('id',$id)->get()[0]->status;
         $user = User::where('username', Session::get('username'))->first();
@@ -228,7 +228,7 @@ class AdminPagesController extends Controller{
                 if(Session::get('err') == '1'){
                   return redirect('view_menus');
                 }else{
-                    return view('edit_menu',['menuname' => $menu, 
+                    return view('edit_menu',['menuname' => $menuname, 
                    'content' => $content, 
                    'status' => $status,
                    'err' =>"",
