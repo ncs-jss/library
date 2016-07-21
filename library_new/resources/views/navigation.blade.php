@@ -28,6 +28,11 @@
 
                                         <li><a href="{{route('contact')}}">Contact Us</a></li>
                                         <li><a href="{{route('external_links')}}">External Links</a></li>
+                                        @foreach($menu as $men)
+                                            @if($men->status == 1)
+                                                <li><a href="{{ URL::route('custom',$men['menuname']) }}">{{ $men->menuname }}</a></li>
+                                            @endif
+                                        @endforeach
                                         <li class="dropdown hidden-xs" >
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-user"></span> &nbsp {{ $username }} &nbsp<span class="caret"></span></a>
                                             <ul class="dropdown-menu">
