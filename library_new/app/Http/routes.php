@@ -61,6 +61,10 @@ Route::get('edit_menu/{id}',['as'=>'edit_menu','uses'=>'AdminPagesController@get
 
 Route::get('custom/{name}',['as'=>'custom','uses'=>'PagesController@getCustomMenu']);
 
+Route::get('view_papers',['as'=>'view_papers','uses'=>'AdminPagesController@getViewPapers']);
+
+Route::get('add_papers',['as'=>'add_papers','uses'=>'AdminPagesController@getAddPapers']);
+
 // POST routes
 
 Route::post('login_user',['as'=>'login_user', 'before'=>'csrf', 'uses'=>'UserController@postLogin']);
@@ -78,3 +82,5 @@ Route::post('query_reply/{id}',['as'=>'query_reply', 'before'=>'csrf', 'uses'=>'
 Route::post('new_menu',['as'=>'new_menu', 'before'=>'csrf', 'uses'=>'UserController@postNewMenu']);
 
 Route::post('edit_menu/{id}',['as'=>'edit', 'before'=>'csrf', 'uses'=>'UserController@postEditMenu']);
+
+Route::post('add_paper',['as'=>'add_paper', 'before'=>'csrf', 'uses'=>'UserController@postAddPaper']);
