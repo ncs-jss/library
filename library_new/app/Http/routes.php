@@ -60,6 +60,7 @@ Route::get('view_menus',['as'=>'view_menus','uses'=>'AdminPagesController@getVie
 Route::get('edit_menu/{id}',['as'=>'edit_menu','uses'=>'AdminPagesController@getEditMenu']);
 
 Route::get('custom/{name}',['as'=>'custom','uses'=>'PagesController@getCustomMenu']);
+
 // POST routes
 
 Route::post('login_user',['as'=>'login_user', 'before'=>'csrf', 'uses'=>'UserController@postLogin']);
