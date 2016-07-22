@@ -85,11 +85,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($menus as $menu)
+                                    @foreach ($menu as $men)
                                     <tr>
                                         <th scope="row">{{ $id++ }}</th>
-                                        <td><a href="{{ URL::route('edit_menu',$menu['id']) }}">{{ $menu->menuname }}</a></td> 
-                                        <td>{{ $menu->created_at->format('M j, Y') }}</td>
+                                        <td><a href="{{ URL::route('edit_menu',$men['id']) }}">{{ $men->menuname }}</a></td> 
+                                        <td>{{ $men->created_at->format('M j, Y') }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
