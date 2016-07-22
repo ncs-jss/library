@@ -50,7 +50,7 @@
                             <h2>{{$name}}</h2>
                             <div class="contact-headline">
 
-                                <p>{{$content}}</p>
+                                <p>{!! $content !!}</p>
 
                             </div>
 
