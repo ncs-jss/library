@@ -22,7 +22,7 @@
                                 <li class="list-group-item dropdown-toggle"><a href="{{route('user_queries')}}">View Queries</a></li>
                                 @endif
                                 <li class="list-group-item dropdown-toggle"><a href="{{route('null')}}">Library OPAC</a></li>
-
+                                <li class="list-group-item dropdown-toggle" ><a href="{{route('view_papers')}}">View Question Papers</a></li>
                             </ul>
                           </div>
 
@@ -55,8 +55,7 @@
                                 <li class="list-group-item dropdown-toggle" ><a href="{{route('view_menus')}}">View Menu Item</a></li>
                                 <li class="list-group-item dropdown-toggle" ><a href="{{route('add_notices')}}">Add Notices</a></li>
                                 @endif 
-                                <li class="list-group-item dropdown-toggle" ><a href="{{route('view_papers')}}">View Question Papers</a></li>
-                            </ul>
+                                                            </ul>
                           </div>
 
                           <!-- New Bar End  -->
