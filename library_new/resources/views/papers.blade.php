@@ -67,7 +67,7 @@
                             </div>
                             <div class="col-sm-6"></div>
                             <div class="col-sm-2 search">
-                                <a href="{{URL::route('add_paper')}}"><button class="btn btn-primary">Add Question Paper</button></a>
+                                <a href="{{URL::route('add_papers')}}"><button class="btn btn-primary">Add Question Paper</button></a>
                             </div>
 
 
@@ -88,7 +88,7 @@
                                     @foreach ($papers as $paper)
                                     <tr>
                                         <th scope="row">{{ $id++ }}</th>
-                                        <td><a href="{{ URL::route('view_paper',$menu['id']) }}">{{ $paper->name }}</a></td> 
+                                        <td><a href="{{ URL::asset('papers',$paper['name']) }}">{{ $paper->name }}</a></td> 
                                         <td>{{ $paper->created_at->format('M j, Y') }}</td>
                                     </tr>
                                     @endforeach
