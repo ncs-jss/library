@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="col-xs-6 col-sm-3 service-item">
                                     <a href="#">
-                                        <img class="img-responsive" src="{{ URL::asset('img/serv_3.jpg') }}" alt="">}}
+                                        <img class="img-responsive" src="{{ URL::asset('img/serv_3.jpg') }}" alt="">
                                         <span class="service-text" id="serv_3">Inter Library Loan</span>
                                     </a>
                                 </div>
