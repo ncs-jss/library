@@ -51,7 +51,7 @@
                             <div class="col-sm-4 ">
 
 
-                                <div class="form-group form-query">
+                                <!-- <div class="form-group form-query">
                                     <label class="">Items per page</label>
                                     <select>
                                         <option value="25" selected>25</option>
@@ -62,7 +62,7 @@
 
                                     </select>
 
-                                </div>
+                                </div> -->
 
                             </div>
                             <div class="col-sm-2"></div>
@@ -91,7 +91,7 @@
                                     <tr>
                                         <td scope="row">{{ $id++ }}</th>
                                         <td><a href="{{ URL::route('view_book',$arrival['id']) }}">{{ $arrival->book_name}}</a></td>
-                                        <td>{{ $arrival->created_at }}</td>
+                                        <td>{{ $arrival->created_at->format('M j, Y') }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
