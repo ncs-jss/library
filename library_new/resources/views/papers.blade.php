@@ -47,7 +47,7 @@
                       <div class="container-fluid">
                         <div class="row resources-content" id="notices">
 
-                            <h2>News and Events</h2>
+                            <h2>Question Papers</h2>
                             <div class="col-sm-4 ">
 
 
@@ -65,9 +65,12 @@
                                 </div> -->
 
                             </div>
+
                             <div class="col-sm-6"></div>
                             <div class="col-sm-2 search">
-                                <a href="{{URL::route('add_papers')}}"><button class="btn btn-primary">Add Question Paper</button></a>
+                                @if( $level == 0)
+                                    <a href="{{URL::route('add_papers')}}"><button class="btn btn-primary">Add Question Paper</button></a>
+                                @endif
                             </div>
 
 
