@@ -255,7 +255,7 @@ class PagesController extends Controller
         }
     }
 
-// Debug
+
     public function getUserQueries(){
         $menu=Menu::Orderby('id','des')->get();
         $queries = Queries::where('username', Session::get('username'))->get();
@@ -273,7 +273,7 @@ class PagesController extends Controller
         return redirect('login');
         }
     }
-// Debug
+
 
 
     public function logout(){
