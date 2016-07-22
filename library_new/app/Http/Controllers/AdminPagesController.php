@@ -8,6 +8,7 @@ use App\Arrivals;
 use App\Queries;
 use App\Suggestions;
 use App\Menu;
+use App\Papers;
 
 use Session;
 use Validator;
@@ -198,13 +199,11 @@ class AdminPagesController extends Controller{
 
     public function getViewMenu(){
         $menu=Menu::Orderby('id','des')->get();
-        $menus=Menu::Orderby('id','des')->get();
         $id=1;
         if(\Auth::Check()){
             $user = User::where('username', Session::get('username'))->first();
             if($user->level  == 0){
                 return view('menus')
-                ->with('menus',$menus)
                 ->with('id',$id)
                 ->with('username',$user->username)
                 ->with('level',$user->level)
@@ -237,6 +236,53 @@ class AdminPagesController extends Controller{
                    ->with('level',$user->level)
                    ->with('menu',$menu);
                 }
+            }else{
+                return redirect('/');
+            }
+        }else{
+            return redirect('login');
+        }
+    }
+
+    public function getAddPapers(){
+        $menu=Menu::Orderby('id','des')->get();
+        if(\Auth::Check()){
+        $user = User::where('username', Session::get('username'))->first();
+        if($user->level==0)
+        {
+            if(Session::get('err') == '1')
+            {
+                return view('add_paper',['err'=>"The Paper has been added."])
+                ->with('username',$user->username)
+                ->with('level',$user->level)
+                ->with('menu',$menu);
+            }else{
+                return view('add_paper')
+                ->with('username',$user->username)
+                ->with('level',$user->level)->with('err',"")
+                ->with('menu',$menu);
+            }
+        }else{
+            return redirect('/');
+        }
+        }else{
+            return redirect('login');
+        }
+     }
+
+    public function getViewPapers(){
+        $menu=Menu::Orderby('id','des')->get();
+        $papers = Papers::Orderby('id','des')->get();
+        $id=1;
+        if(\Auth::Check()){
+            $user = User::where('username', Session::get('username'))->first();
+            if($user->level  == 0){
+                return view('papers')
+                ->with('papers',$papers)
+                ->with('id',$id)
+                ->with('username',$user->username)
+                ->with('level',$user->level)
+                ->with('menu',$menu);
             }else{
                 return redirect('/');
             }
