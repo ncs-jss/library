@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class papers extends Model
 {
     protected $fillable = [
-         'subject','semester','session','path'
+         'name','path'
     ];
     protected $hidden = [
         'updated_at','remember_token'
