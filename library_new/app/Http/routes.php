@@ -61,7 +61,7 @@ Route::get('edit_menu/{id}',['as'=>'edit_menu','uses'=>'AdminPagesController@get
 
 Route::get('custom/{name}',['as'=>'custom','uses'=>'PagesController@getCustomMenu']);
 
-Route::get('view_papers',['as'=>'view_papers','uses'=>'AdminPagesController@getViewPapers']);
+Route::get('view_papers',['as'=>'view_papers','uses'=>'PagesController@getViewPapers']);
 
 Route::get('add_papers',['as'=>'add_papers','uses'=>'AdminPagesController@getAddPapers']);
 
