@@ -8,6 +8,7 @@ use App\Arrivals;
 use App\Queries;
 use App\Suggestions;
 use App\Menu;
+use App\Papers;
 
 use Session;
 use Validator;
@@ -302,5 +303,23 @@ class PagesController extends Controller
         ->with('content',$content);
         }
     }
+
+     public function getViewPapers(){
+        $menu=Menu::Orderby('id','des')->get();
+        $papers = Papers::Orderby('id','des')->get();
+        $id=1;
+        if(\Auth::Check()){
+            $user = User::where('username', Session::get('username'))->first();
+                return view('papers')
+                ->with('papers',$papers)
+                ->with('id',$id)
+                ->with('username',$user->username)
+                ->with('level',$user->level)
+                ->with('menu',$menu);
+        }else{
+            return redirect('login');
+        }
+    }
+
 
 }
