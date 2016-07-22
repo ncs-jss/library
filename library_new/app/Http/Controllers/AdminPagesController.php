@@ -269,26 +269,4 @@ class AdminPagesController extends Controller{
             return redirect('login');
         }
      }
-
-    public function getViewPapers(){
-        $menu=Menu::Orderby('id','des')->get();
-        $papers = Papers::Orderby('id','des')->get();
-        $id=1;
-        if(\Auth::Check()){
-            $user = User::where('username', Session::get('username'))->first();
-            if($user->level  == 0){
-                return view('papers')
-                ->with('papers',$papers)
-                ->with('id',$id)
-                ->with('username',$user->username)
-                ->with('level',$user->level)
-                ->with('menu',$menu);
-            }else{
-                return redirect('/');
-            }
-        }else{
-            return redirect('login');
-        }
-    }
-
 }
