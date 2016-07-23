@@ -9,10 +9,13 @@ use App\Notices;
 use App\Suggestions;
 use App\Menu;
 use App\Papers;
+use App\Student;
+use App\Staff;
 
 use Session;
 use Validator;
 use Auth;
+use Mail;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -77,9 +80,9 @@ class UserController extends Controller
             Session::flash('err',"1");
             return redirect('query');
         }
-    }else{
-        return redirect('login');
-    }
+        }else{
+            return redirect('login');
+        }
     }
 
 
@@ -102,12 +105,47 @@ class UserController extends Controller
             $arrival->book_name = $data['book_name'];
             $arrival->book_desc = $data['book_desc'];
             $arrival->save();
+
+            if($data['mail'] == 0){
+                $staffs=Staff::Orderby('id','des')->get();
+                
+                foreach($staffs as $staff){
+                    $email = $staff->email;
+                    $name = $staff->name;
+                    echo $email." ".$name;
+                    Mail::send('mail.mail', array('name'=> $staff->name,'book_name' => $data['book_name']), function($message){
+                    $message->to($GLOBALS['email'],$GLOBALS['name'])->subject('Library Notification');});
+                }
+
+            }elseif ($data['mail'] == 1) {
+                $students=Student::Orderby('id','des')->get();
+
+                foreach($students as $student){
+                    Mail::send('mail.mail', array('name'=> $student->name,'book_name' => $data['book_name']), function($message){
+                    $message->to($GLOBALS[$student->email], $GLOBALS[$student->name])->subject('Library Notification');});
+                }
+
+            }else{
+                $staffs=Staff::Orderby('id','des')->get();
+                
+                foreach($staffs as $staff){
+                    Mail::send('mail.mail', array('name'=> $staff->name,'book_name' => $data['book_name']), function($message){
+                    $message->to($GLOBALS[$staff->email],$GLOBALS[$staff->name])->subject('Library Notification');});
+                }
+                
+                $students=Student::Orderby('id','des')->get();
+                
+                foreach($students as $student){
+                    Mail::send('mail.mail', array('name'=> $student->name,'book_name' => $data['book_name']), function($message){
+                    $message->to($GLOBALS[$student->email],$GLOBALS[$student->name])->subject('Library Notification');});
+                }
+            } 
             Session::flash('err',"1");
             return redirect('add_books');
         }
-    }else{
-        return redirect('login');
-    }
+        }else{
+            return redirect('login');
+        }
     }
 
 
@@ -295,5 +333,4 @@ class UserController extends Controller
             return redirect('login');
         }
     }
-}
 }
