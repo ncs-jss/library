@@ -92,7 +92,7 @@ class UserController extends Controller
         {
         $data=Input::all();
         array_pop($data);
-        $rules=['book_id'=>'required', 'book_name'=>'required', 'book_desc'=>'required'];
+        $rules=['book_id'=>'required', 'book_name'=>'required', 'book_desc'=>'required','mail' => 'required'];
         $validator=Validator::make($data,$rules);
 
         if($validator->fails()){
@@ -110,34 +110,31 @@ class UserController extends Controller
                 $staffs=Staff::Orderby('id','des')->get();
                 
                 foreach($staffs as $staff){
-                    $email = $staff->email;
-                    $name = $staff->name;
-                    echo $email." ".$name;
-                    Mail::send('mail.mail', array('name'=> $staff->name,'book_name' => $data['book_name']), function($message){
-                    $message->to($GLOBALS['email'],$GLOBALS['name'])->subject('Library Notification');});
+                    Mail::send('mail.mail', array('name'=> $staff->name,'book_name' => $data['book_name']), function($message) use ($staff){
+                    $message->to($staff->email,$staff->name)->subject('Library Notification');});
                 }
 
             }elseif ($data['mail'] == 1) {
                 $students=Student::Orderby('id','des')->get();
 
                 foreach($students as $student){
-                    Mail::send('mail.mail', array('name'=> $student->name,'book_name' => $data['book_name']), function($message){
-                    $message->to($GLOBALS[$student->email], $GLOBALS[$student->name])->subject('Library Notification');});
+                    Mail::send('mail.mail', array('name'=> $student->name,'book_name' => $data['book_name']), function($message) use ($student){
+                    $message->to($student->email, $student->name)->subject('Library Notification');});
                 }
 
             }else{
                 $staffs=Staff::Orderby('id','des')->get();
                 
                 foreach($staffs as $staff){
-                    Mail::send('mail.mail', array('name'=> $staff->name,'book_name' => $data['book_name']), function($message){
-                    $message->to($GLOBALS[$staff->email],$GLOBALS[$staff->name])->subject('Library Notification');});
+                    Mail::send('mail.mail', array('name'=> $staff->name,'book_name' => $data['book_name']), function($message) use ($staff){
+                    $message->to($staff->email,$staff->name)->subject('Library Notification');});
                 }
                 
                 $students=Student::Orderby('id','des')->get();
                 
                 foreach($students as $student){
-                    Mail::send('mail.mail', array('name'=> $student->name,'book_name' => $data['book_name']), function($message){
-                    $message->to($GLOBALS[$student->email],$GLOBALS[$student->name])->subject('Library Notification');});
+                    Mail::send('mail.mail', array('name'=> $student->name,'book_name' => $data['book_name']), function($message) use ($student){
+                    $message->to($student->email, $student->name)->subject('Library Notification');});
                 }
             } 
             Session::flash('err',"1");
