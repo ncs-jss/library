@@ -63,6 +63,12 @@
                                         <label class=" sr-only">Book Description</label>
                                         <textarea placeholder="Book Description" name="book_desc" rows="3" ></textarea>
                                     </div>
+                                    <div class="form-group">
+                                            <label class="">Notify:</label>
+                                            <input type="radio" name="mail" value="0">Faculty&nbsp&nbsp
+                                            <input type="radio" name="mail" value="1">&nbsp&nbspStudents&nbsp&nbsp
+                                            <input type="radio" name="mail" value="2">&nbsp&nbspEveryone
+                                        </div>
                                     <div style="color:green">{{ $err }}</div>
                                     <div style="color:red">
                                     @if($errors->has())
