@@ -14,15 +14,16 @@ use Session;
 use Validator;
 use Auth;
 
+use Illuminate\Http\Request;
+use App\Http\Requests;
+
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesResources;
-use Illuminate\Http\Request;
-use App\Http\Requests;
+
 
 class UserController extends Controller
 {
@@ -255,42 +256,44 @@ class UserController extends Controller
     public function postAddPaper(){
         if(\Auth::Check())
         {
+            // var_dump(Input::get('file'));
         $data=Input::all();
         array_pop($data);
 
         $rules=['subject'=>'required', 
         'year'=>'required',  
         'semester'=>'required'];
-        print_r(($data));
+        // print_r(($data));
         $validator=Validator::make($data,$rules);
 
         if($validator->fails()){
             return Redirect::back()
             ->withErrors($validator->errors())
             ->withInput();
-            echo 'a';
-        }else{echo 'b';
-            // $paper= new Papers;
-            if ($data['file']) 
+            
+        }else{
+            // print_r(Input::hasFile('file'));
+            $paper = new Papers;
+            if (Input::hasFile('file')) 
                 if(Input::file('file')->isValid()) {
-                echo "c";
+                // echo "c";
                 $destinationPath = 'papers'; // upload path
                 $extension = Input::file('file') -> getClientOriginalExtension(); // getting image extension
-                print_r($extension);
-                // if($extension == 'pdf'){
-                // $fileName = $data['subject'].'_'.$data['year'].'_'.$data['semester'].'.'.$extension; // renameing image
-                // Input::file('file')->move($destinationPath, $fileName); // uploading file to given path
-                // $paper->name = $fileName;
-                // $path->path = $destinationPath;
+                // print_r($extension);
+                if($extension == 'pdf'){
+                $fileName = $data['subject'].'_'.$data['year'].'_'.$data['semester'].'.'.$extension; // renameing image
+                Input::file('file')->move($destinationPath, $fileName); // uploading file to given path
+                $paper->name = $fileName;
+                $path->path = $destinationPath;
             }}
 
-        //     $paper->save();
-        //     Session::flash('err',"1");
-        //     return redirect('view_papers');
-        // }
-        // }else{
-        //     return redirect('login');
-        // }
+            $paper->save();
+            Session::flash('err',"1");
+            return redirect('view_papers');
+        }
+        }else{
+            return redirect('login');
+        }
     }
 }
 }

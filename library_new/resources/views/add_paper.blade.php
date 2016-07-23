@@ -50,7 +50,7 @@
                             <div class="col-sm-3"></div>
                             <div class="col-sm-6">
                                 <h2>Add Question Papers</h2>
-                                <form action="add_paper" method="POST"> 
+                                <form action="add_paper" method="POST" enctype="multipart/form-data"> 
                                     <div class="form-group">
                                         <label class="sr-only">Subject:</label>
                                         <input type="text" class="form-control" id="" name="subject" placeholder="Subject *" required>
