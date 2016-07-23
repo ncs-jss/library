@@ -216,9 +216,8 @@ class PagesController extends Controller
         $menu=Menu::Orderby('id','des')->get();
         if(\Auth::Check()){
         $user = User::where('username', Session::get('username'))->first();
-            if(Session::get('err') == '1')
-            {
-                return view('query',['err'=>"Your Query has been submitted successfully. Thank You!!"])
+            if(Session::get('err') == '1'){  
+                return view('queries',['err'=>"Your Query has been submitted successfully. Thank You!!"])
                 ->with('username',$user->username)
                 ->with('level',$user->level)
                 ->with('menu',$menu);
@@ -280,6 +279,7 @@ class PagesController extends Controller
     public function logout(){
         \Auth::logout();
         session_unset();
+        Session::flush();
         return redirect('/');
     }
 
