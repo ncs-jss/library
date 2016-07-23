@@ -17,7 +17,7 @@ class CreateStudentTable extends Migration
             $table->string('name');
             $table->string('username')->length(25);
             $table->string('email');
-            $table->integer('mobile')->length(10);
+            $table->integer('phone_no')->length(10);
             $table->integer('admission_year')->length(4);
             $table->string('course');
             $table->string('branch');
