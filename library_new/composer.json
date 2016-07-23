@@ -3,6 +3,7 @@
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
+    "guzzlehttp/guzzle": "~5.3|~6.0",
     "type": "project",
     "require": {
         "php": ">=5.5.9",
