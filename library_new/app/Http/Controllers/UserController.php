@@ -291,14 +291,12 @@ class UserController extends Controller
     public function postAddPaper(){
         if(\Auth::Check())
         {
-            // var_dump(Input::get('file'));
         $data=Input::all();
         array_pop($data);
 
         $rules=['subject'=>'required', 
         'year'=>'required',  
         'semester'=>'required'];
-        // print_r(($data));
         $validator=Validator::make($data,$rules);
 
         if($validator->fails()){
@@ -307,22 +305,19 @@ class UserController extends Controller
             ->withInput();
             
         }else{
-            // print_r(Input::hasFile('file'));
-            $paper = new Papers;
-            if (Input::hasFile('file')) 
+                if (Input::hasFile('file')) 
                 if(Input::file('file')->isValid()) {
-                // echo "c";
                 $destinationPath = 'papers'; // upload path
                 $extension = Input::file('file') -> getClientOriginalExtension(); // getting image extension
-                // print_r($extension);
                 if($extension == 'pdf'){
                 $fileName = $data['subject'].'_'.$data['year'].'_'.$data['semester'].'.'.$extension; // renameing image
                 Input::file('file')->move($destinationPath, $fileName); // uploading file to given path
+                $paper = new Papers;
                 $paper->name = $fileName;
                 $path->path = $destinationPath;
-            }}
-
-            $paper->save();
+                $paper->save();
+            }
+        }
             Session::flash('err',"1");
             return redirect('view_papers');
         }
